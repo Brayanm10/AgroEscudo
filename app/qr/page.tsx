@@ -5,8 +5,12 @@ import {
   ArrowDown,
   BellRing,
   ChartNoAxesCombined,
+  Download,
   ExternalLink,
+  Facebook,
   History,
+  Home,
+  Instagram,
   Mail,
   MessageCircle,
   RadioTower,
@@ -114,6 +118,9 @@ export default function QrPage() {
                 <a href={siteConfig.qrWhatsappUrl} className="btn-amber">
                   <MessageCircle size={19} aria-hidden="true" /> Hablar con AgroEscudo
                 </a>
+                <Link href="/" className="btn-ghost-light">
+                  <Home size={18} aria-hidden="true" /> Ver landing completa
+                </Link>
                 <a href="#sistema" className="btn-ghost-light">
                   Conocer el sistema <ArrowDown size={18} aria-hidden="true" />
                 </a>
@@ -254,20 +261,41 @@ export default function QrPage() {
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-white/70">Una conversación técnica es el primer paso para entender el sitio, sus variables y una posible evaluación.</p>
             <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
               <a href={siteConfig.qrWhatsappUrl} className="btn-amber"><MessageCircle size={19} aria-hidden="true" /> Hablar por WhatsApp</a>
+              <Link href="/" className="btn-ghost-light"><Home size={19} aria-hidden="true" /> Ver landing completa</Link>
               <a href={siteConfig.emailUrl} className="btn-ghost-light"><Mail size={19} aria-hidden="true" /> {siteConfig.email}</a>
             </div>
             <p className="mt-7 text-sm font-bold text-white/55">{siteConfig.phone} · Cochabamba, Bolivia</p>
+            <div className="mt-7 flex flex-wrap justify-center gap-3">
+              <a href={siteConfig.socialLinks[0].href} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-md border border-white/20 bg-white/10 px-4 text-sm font-black text-white transition hover:-translate-y-0.5 hover:bg-white/20">
+                <Instagram size={18} aria-hidden="true" /> Instagram
+              </a>
+              <a href={siteConfig.socialLinks[1].href} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-md border border-white/20 bg-white/10 px-4 text-sm font-black text-white transition hover:-translate-y-0.5 hover:bg-white/20">
+                <Facebook size={18} aria-hidden="true" /> Facebook
+              </a>
+            </div>
           </div>
         </section>
       </main>
 
-      <footer className="bg-[#061b16] py-7 text-white/55">
-        <div className="container-page flex flex-col gap-4 text-xs font-semibold sm:flex-row sm:items-center sm:justify-between">
+      <footer className="bg-[#061b16] pb-28 pt-8 text-white/60 sm:pb-28">
+        <div className="container-page grid gap-6 text-xs font-semibold">
           <p>© {year} AgroEscudo. Tecnología postcosecha desarrollada en Bolivia.</p>
-          <div className="flex flex-wrap gap-x-5 gap-y-2">
-            <a href="/qr-agroescudo.png" download className="font-black text-white hover:text-brandAmberLight">Descargar QR PNG</a>
-            <a href="/qr-agroescudo.svg" download className="font-black text-white hover:text-brandAmberLight">Descargar QR SVG</a>
-            <Link href="/" className="font-black text-white hover:text-brandAmberLight">Ver landing completa</Link>
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <Link href="/" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-white px-4 text-sm font-black text-brandGreenDark transition hover:-translate-y-0.5 hover:bg-brandAmberLight">
+              <Home size={17} aria-hidden="true" /> Ver landing completa
+            </Link>
+            <a href="/qr-agroescudo.png" download className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md border border-white/15 px-4 text-sm font-black text-white transition hover:-translate-y-0.5 hover:border-brandAmberLight hover:text-brandAmberLight">
+              <Download size={17} aria-hidden="true" /> QR PNG
+            </a>
+            <a href="/qr-agroescudo.svg" download className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md border border-white/15 px-4 text-sm font-black text-white transition hover:-translate-y-0.5 hover:border-brandAmberLight hover:text-brandAmberLight">
+              <Download size={17} aria-hidden="true" /> QR SVG
+            </a>
+            <a href={siteConfig.socialLinks[0].href} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md border border-white/15 px-4 text-sm font-black text-white transition hover:-translate-y-0.5 hover:border-brandAmberLight hover:text-brandAmberLight">
+              <Instagram size={17} aria-hidden="true" /> Instagram
+            </a>
+            <a href={siteConfig.socialLinks[1].href} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md border border-white/15 px-4 text-sm font-black text-white transition hover:-translate-y-0.5 hover:border-brandAmberLight hover:text-brandAmberLight">
+              <Facebook size={17} aria-hidden="true" /> Facebook
+            </a>
           </div>
         </div>
       </footer>
