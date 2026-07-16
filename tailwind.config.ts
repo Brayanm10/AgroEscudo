@@ -5,13 +5,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        brandGreen: "#0B5D3B",
-        brandGreenDark: "#063B27",
-        brandAmber: "#D6A84F",
-        brandField: "#F6F8F4",
-        brandText: "#102018",
-        brandMuted: "#5C6B62",
-        brandInk: "#031F16"
+        brandGreen: "#0B6B50",
+        brandGreenDark: "#073E32",
+        brandAmber: "#D69A27",
+        brandAmberLight: "#F2C66D",
+        brandAmberDark: "#9A6516",
+        brandField: "#EEF2EE",
+        brandText: "#10231C",
+        brandMuted: "#4C5A54",
+        brandInk: "#071D18"
       },
       boxShadow: {
         soft: "0 18px 45px rgba(16, 32, 24, 0.08)",

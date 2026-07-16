@@ -1,7 +1,11 @@
 node_modules/
 .next/
 out/
+assets/generated/
+assets/review/
+assets/source/
 *.log
-.env
-.env.local
+*.tsbuildinfo
+.env*
+!.env.example
 .vercel/

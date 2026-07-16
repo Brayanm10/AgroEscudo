@@ -1,69 +1,48 @@
-import Image from "next/image";
-import { AlertTriangle, EyeOff, Timer } from "lucide-react";
+import { Activity, Clock3, Droplets, ThermometerSun } from "lucide-react";
 
-const problems = [
-  {
-    icon: Timer,
-    title: "Decisión tardía",
-    text: "Si el calentamiento se detecta por olor, condensación o inspección casual, la respuesta ya parte con desventaja."
-  },
-  {
-    icon: EyeOff,
-    title: "Falta de evidencia",
-    text: "Sin historial de temperatura, humedad y acciones, discutir responsabilidades consume más tiempo que corregir la operación."
-  },
-  {
-    icon: AlertTriangle,
-    title: "Merma operativa",
-    text: "Cada hora fuera de rango puede impactar calidad, peso, inocuidad y valor comercial del inventario almacenado."
-  }
+const signals = [
+  { icon: ThermometerSun, label: "Temperatura", value: "Cambio térmico" },
+  { icon: Droplets, label: "Humedad", value: "Condición ambiental" },
+  { icon: Activity, label: "Tendencia", value: "Evolución del riesgo" }
 ];
 
 export function ProblemSection() {
   return (
-    <section id="problema" className="section-band bg-white">
+    <section id="problema" className="section-band overflow-hidden bg-white">
       <div className="container-page">
-        <div className="grid gap-10 lg:grid-cols-[0.92fr_0.72fr] lg:items-end">
-          <div className="max-w-4xl">
-            <p className="eyebrow">Problema</p>
-            <h2 className="section-title mt-4">
-              El grano no se pierde de golpe. Se deteriora mientras la operación trabaja a ciegas.
-            </h2>
-            <p className="section-copy mt-6">
-              En muchos centros de acopio, la condición del lote depende de rondas manuales y experiencia del operador. AgroEscudo no reemplaza esa experiencia: la convierte en datos, alertas y evidencia para actuar antes.
+        <div className="grid gap-12 lg:grid-cols-[1.08fr_.92fr] lg:items-center">
+          <div className="reveal-on-scroll max-w-4xl">
+            <p className="eyebrow">El riesgo invisible</p>
+            <h2 className="section-title mt-5">El deterioro comienza antes de que pueda verse.</h2>
+            <p className="section-copy mt-7">
+              Los cambios de temperatura, humedad y condensación pueden avanzar dentro del almacenamiento sin que una inspección ocasional los detecte. Cuando el problema ya es evidente, la capacidad de reacción es menor.
             </p>
+            <div className="mt-9 flex items-start gap-4 border-l-2 border-brandAmber pl-5">
+              <Clock3 className="mt-1 shrink-0 text-brandGreen" size={22} aria-hidden="true" />
+              <p className="max-w-xl text-base font-bold leading-7 text-brandText">
+                AgroEscudo complementa la experiencia del operador con señales continuas y evidencia para decidir a tiempo.
+              </p>
+            </div>
           </div>
-          <div className="relative overflow-hidden rounded-lg border border-brandGreen/10 bg-brandGreenDark p-3 shadow-lift">
-            <div className="relative h-48 overflow-hidden rounded-md">
-              <Image
-                src="/agro-field-premium.png"
-                alt="Inventario agrícola monitoreado"
-                fill
-                sizes="(max-width: 1024px) 100vw, 36vw"
-                className="object-cover object-center"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-brandInk/88 via-brandInk/38 to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-brandInk/92 to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4 flex items-center gap-3 rounded-lg border border-white/14 bg-brandInk/66 p-3 shadow-soft backdrop-blur-sm">
-                <Image src="/logo-mark.png" alt="" width={44} height={44} className="h-11 w-11 shrink-0 rounded-lg bg-white p-1" />
-                <div>
-                  <p className="text-base font-black text-white drop-shadow">AgroEscudo</p>
-                  <p className="text-xs font-black text-brandAmber drop-shadow">Visibilidad antes del daño visible</p>
-                </div>
+
+          <div className="reveal-on-scroll relative min-h-[420px] overflow-hidden rounded-lg bg-[linear-gradient(145deg,#f3e4bf_0%,#d6a84f_46%,#7a4f16_100%)] p-6 shadow-lift sm:p-8">
+            <div className="grain-texture absolute inset-0 opacity-55" />
+            <div className="absolute inset-x-0 bottom-0 h-2/3 bg-[linear-gradient(0deg,rgba(3,31,22,.84),transparent)]" />
+            <div className="relative flex h-full min-h-[356px] flex-col justify-end">
+              <p className="max-w-sm text-3xl font-black leading-tight text-white sm:text-4xl">
+                Lo que no se registra, llega tarde a la decisión.
+              </p>
+              <div className="mt-7 grid gap-2 sm:grid-cols-3">
+                {signals.map(({ icon: Icon, label, value }) => (
+                  <div key={label} className="border-t border-white/30 pt-4 text-white">
+                    <Icon size={19} className="text-brandAmberLight" aria-hidden="true" />
+                    <p className="mt-3 text-[10px] font-black uppercase tracking-[0.13em] text-white/60">{label}</p>
+                    <p className="mt-1 text-xs font-bold leading-5 sm:text-sm">{value}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
-        </div>
-        <div className="mt-12 grid gap-4 md:grid-cols-3">
-          {problems.map(({ icon: Icon, title, text }) => (
-            <article key={title} className="card group">
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-brandGreenDark text-brandAmber shadow-soft transition group-hover:scale-105">
-                <Icon size={22} aria-hidden="true" />
-              </div>
-              <h3 className="mt-6 text-xl font-black tracking-normal text-brandText">{title}</h3>
-              <p className="mt-3 text-sm leading-7 text-brandMuted">{text}</p>
-            </article>
-          ))}
         </div>
       </div>
     </section>

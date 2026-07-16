@@ -1,101 +1,67 @@
-import { CheckCircle2, MessageCircle } from "lucide-react";
+import { ArrowRight, CheckCircle2, MapPin, MessageCircle } from "lucide-react";
+import { siteConfig } from "@/lib/site-config";
 
-const visitWhatsApp = "https://wa.me/59179366846?text=Hola%20AgroEscudo%2C%20quiero%20agendar%20una%20visita%20t%C3%A9cnica";
-
-const includes = [
-  "1 a 3 nodos",
-  "Selección de puntos críticos con el operador",
-  "Configuración inicial de umbrales",
-  "Capacitación breve",
-  "Dashboard básico de seguimiento",
-  "Alertas por WhatsApp o correo",
-  "Reportes semanales",
-  "Bitácora de eventos y respuestas",
-  "Informe final para decidir escalamiento"
+const stages = [
+  "Evaluación inicial del sitio",
+  "Definición de variables y umbrales",
+  "Instalación y monitoreo",
+  "Informe de resultados"
 ];
 
-const kpis = [
-  "Disponibilidad del sistema",
-  "Eventos detectados",
-  "Tiempo hasta primera respuesta",
-  "Horas fuera de rango",
-  "Acciones registradas",
-  "Claridad para escalar o ajustar"
-];
-
-const fit = [
-  "Silos, galpones o ambientes con inventario almacenado",
-  "Operador responsable disponible para recibir alertas",
-  "Interés real en validar datos en sitio, no solo ver una demo"
-];
+const metrics = ["Disponibilidad del sistema", "Eventos detectados", "Tiempo de respuesta", "Acciones registradas"];
 
 export function PilotSection() {
   return (
-    <section id="piloto" className="section-band bg-brandInk text-white">
-      <div className="container-page">
-        <div className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
-          <div>
-            <p className="text-[11px] font-black uppercase tracking-[0.18em] text-brandAmber">Piloto operativo</p>
-            <h2 className="mt-4 max-w-2xl text-3xl font-black leading-[1.05] tracking-normal text-white sm:text-4xl lg:text-5xl">
-              Un piloto acotado para decidir con evidencia, no con promesas.
+    <section id="piloto" className="section-band relative overflow-hidden bg-brandInk text-white">
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.035)_1px,transparent_1px)] bg-[size:48px_48px]" />
+      <div className="container-page relative">
+        <div className="grid gap-12 lg:grid-cols-[1.05fr_.95fr] lg:items-start">
+          <div className="reveal-on-scroll">
+            <p className="text-[11px] font-black uppercase tracking-[0.18em] text-brandAmberLight">Próximo piloto</p>
+            <h2 className="mt-5 max-w-4xl text-[clamp(2.5rem,5.8vw,5.5rem)] font-black leading-[.98]">
+              Tu instalación puede ser el próximo piloto AgroEscudo.
             </h2>
-            <p className="mt-6 text-base leading-8 text-white/72 sm:text-lg">
-              Durante 60 a 90 días medimos si AgroEscudo ayuda a detectar condiciones de riesgo, responder con más orden y documentar la operación de almacenamiento.
+            <p className="mt-7 max-w-2xl text-lg leading-8 text-white/70">
+              Buscamos operaciones de almacenamiento, acopio y transformación en Cochabamba y Santa Cruz para validar el sistema en condiciones reales y medir disponibilidad, eventos detectados y tiempos de respuesta.
             </p>
-            <a
-              href={visitWhatsApp}
-              className="mt-8 inline-flex items-center justify-center rounded-lg bg-brandAmber px-5 py-3 text-sm font-black text-brandInk shadow-soft transition hover:-translate-y-0.5 hover:bg-white"
-            >
-              <MessageCircle className="mr-2" size={18} aria-hidden="true" />
-              Agendar visita técnica
-            </a>
-            <p className="mt-4 text-sm font-semibold leading-6 text-white/58">
-              La visita sirve para revisar el sitio, elegir puntos de medición y definir si el piloto tiene sentido operativo.
+            <div className="mt-8 flex items-center gap-2 text-sm font-black text-brandAmberLight">
+              <MapPin size={17} aria-hidden="true" /> Cochabamba · Santa Cruz
+            </div>
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+              <a href={siteConfig.technicalVisitUrl} className="btn-amber">
+                Solicitar evaluación del sitio <ArrowRight size={18} aria-hidden="true" />
+              </a>
+              <a href={siteConfig.whatsappUrl} className="btn-ghost-light">
+                <MessageCircle size={18} aria-hidden="true" /> Hablar por WhatsApp
+              </a>
+            </div>
+            <p className="mt-4 pr-14 text-xs font-semibold leading-5 text-white/50 lg:pr-0">
+              La evaluación confirma si el caso tiene sentido operativo. No implica piloto gratuito ni compromiso de compra.
             </p>
           </div>
-          <div className="grid gap-4 xl:grid-cols-[1fr_1fr]">
-            <PilotList title="Qué incluye" items={includes} />
-            <PilotList title="KPIs que medimos" items={kpis} />
-            <article className="rounded-lg border border-brandAmber/25 bg-brandAmber/12 p-6 backdrop-blur xl:col-span-2">
-              <div className="grid gap-6 md:grid-cols-[0.95fr_1.05fr] md:items-center">
-                <div>
-                  <h3 className="text-xl font-black text-white">Cuándo tiene sentido probarlo</h3>
-                  <p className="mt-3 text-sm leading-7 text-white/70">
-                    AgroEscudo encaja mejor cuando existe inventario concentrado, riesgo económico y una persona responsable de operar alertas.
-                  </p>
+
+          <div className="reveal-on-scroll border border-white/20 bg-white/[0.06] p-6 backdrop-blur sm:p-8">
+            <p className="text-xs font-black uppercase tracking-[0.16em] text-brandAmberLight">Ruta de validación</p>
+            <ol className="mt-7 divide-y divide-white/10 border-y border-white/10">
+              {stages.map((stage, index) => (
+                <li key={stage} className="flex items-center gap-4 py-5">
+                  <span className="text-xl font-black text-brandAmberLight">0{index + 1}</span>
+                  <span className="text-sm font-black text-white">{stage}</span>
+                </li>
+              ))}
+            </ol>
+            <p className="mt-7 text-xs font-black uppercase tracking-[0.16em] text-white/50">Qué se observa</p>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              {metrics.map((metric) => (
+                <div key={metric} className="flex gap-2 text-sm leading-6 text-white/70">
+                  <CheckCircle2 className="mt-1 shrink-0 text-brandAmberLight" size={16} aria-hidden="true" />
+                  {metric}
                 </div>
-                <ul className="space-y-3">
-                  {fit.map((item) => (
-                    <li key={item} className="flex gap-3 text-sm leading-6 text-white/78">
-                      <CheckCircle2 className="mt-0.5 shrink-0 text-brandAmber" size={17} aria-hidden="true" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </article>
+              ))}
+            </div>
           </div>
-        </div>
-        <div className="mt-10 rounded-lg border border-white/12 bg-white/8 p-5 text-sm font-semibold leading-7 text-white/68">
-          AgroEscudo está en etapa de validación comercial. El objetivo del piloto es producir evidencia útil para el operador y decidir si corresponde escalar, ajustar o descartar el caso de uso.
         </div>
       </div>
     </section>
-  );
-}
-
-function PilotList({ title, items }: { title: string; items: string[] }) {
-  return (
-    <article className="rounded-lg border border-white/12 bg-white/8 p-6 backdrop-blur">
-      <h3 className="text-xl font-black text-white">{title}</h3>
-      <ul className="mt-5 space-y-3">
-        {items.map((item) => (
-          <li key={item} className="flex gap-3 text-sm leading-6 text-white/76">
-            <CheckCircle2 className="mt-0.5 shrink-0 text-brandAmber" size={17} aria-hidden="true" />
-            <span>{item}</span>
-          </li>
-        ))}
-      </ul>
-    </article>
   );
 }

@@ -28,6 +28,15 @@ http://localhost:3000
 npm run build
 ```
 
+## Validación
+
+```powershell
+npm run lint
+npm run build
+```
+
+En este proyecto `npm run lint` genera los tipos de rutas de Next.js y ejecuta una validación TypeScript sin emitir archivos.
+
 ## Deploy en Vercel
 
 1. Subir el repositorio a GitHub.
@@ -39,6 +48,25 @@ npm run build
 7. Usar dominio gratuito `agroescudo.vercel.app` si está disponible.
 8. Si no está disponible, usar `agroescudo-bolivia.vercel.app`.
 9. Conectar dominio propio en el futuro.
+
+## URLs públicas esperadas
+
+- https://agroescudo.vercel.app/
+- https://agroescudo.vercel.app/qr
+- https://agroescudo.vercel.app/qr-agroescudo.png
+- https://agroescudo.vercel.app/qr-agroescudo.svg
+- https://agroescudo.vercel.app/robots.txt
+- https://agroescudo.vercel.app/sitemap.xml
+
+## Variables de entorno opcionales
+
+```env
+NEXT_PUBLIC_SITE_URL=https://agroescudo.vercel.app
+GOOGLE_SITE_VERIFICATION=
+NEXT_PUBLIC_GA_ID=
+```
+
+`GOOGLE_SITE_VERIFICATION` se usa para Search Console. `NEXT_PUBLIC_GA_ID` queda reservado para Google Analytics 4 si se decide activarlo después.
 
 ## Redes sociales
 
@@ -55,6 +83,29 @@ npm run build
 - Dominio final.
 - Correos institucionales futuros.
 - Posibles logos oficiales de ecosistema si se cuenta con autorización.
+
+## Search Console
+
+Ver pasos completos en `SEO_SETUP_GRATUITO.md`.
+
+## Activos visuales finales
+
+- `public/images/hero-agroescudo-silo.webp`: imagen editorial generada para el hero, sin textos ni marcas.
+- `public/images/platform-dashboard.webp`: captura estática del frontend real con datos demostrativos locales.
+- `public/images/press-la-razon-social.webp`: pieza social de La Razón, 1080 x 1350.
+- `public/images/press-la-razon-cover.webp`: portada de Energías & Negocios, 1179 x 1582.
+- `public/images/press-la-razon-article.webp`: página de la entrevista, 1179 x 1563.
+- `public/images/ecosystem-innova-up.webp`: pieza del programa Innova Up, 1179 x 1228.
+- `public/images/brayan-javier-mejia-saavedra.webp`: retrato oficial del fundador y CEO, 1200 x 1500.
+- `public/images/agroescudo/system/arquitectura-agroescudo.svg`: ilustración técnica original creada en código; no representa una instalación ejecutada.
+- `public/qr-agroescudo.png`: QR oficial de 1200 px que dirige a `https://agroescudo.vercel.app/qr`.
+- `public/qr-agroescudo.svg`: versión vectorial del mismo QR para impresión.
+
+Los archivos fuente se conservan en `assets/source/`; no se sirven públicamente. La evidencia de prensa enlaza a la publicación original y la pieza de Innova Up se presenta exclusivamente como constancia de participación en el programa.
+
+La ficha completa de origen, dimensiones, peso, alt y prompt está en `VISUAL_ASSETS.md`.
+
+Correo público de contacto: `agroescudo@gmail.com`.
 
 ## Notas comerciales
 
