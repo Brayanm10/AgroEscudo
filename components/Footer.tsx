@@ -7,6 +7,7 @@ const links = [
   { label: "Avances", href: "#avances" },
   { label: "Ecosistema", href: "#ecosistema" },
   { label: "Prensa", href: "#prensa" },
+  { label: "Cobertura completa", href: "/prensa" },
   { label: "Piloto", href: "#piloto" }
 ];
 

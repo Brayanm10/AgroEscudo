@@ -7,11 +7,11 @@ export const siteConfig = {
   url: rawSiteUrl.replace(/\/$/, ""),
   locale: "es_BO",
   language: "es-BO",
-  title: "AgroEscudo | Monitoreo para silos y granos almacenados en Bolivia",
+  title: "AgroEscudo | Monitoreo inteligente para silos y almacenamiento de granos",
   description:
-    "AgroEscudo es una plataforma boliviana de monitoreo para silos, galpones y centros de acopio. Sensores IoT, alertas, historial y reportes para ayudar a proteger el valor del grano almacenado.",
+    "Tecnología boliviana de monitoreo postcosecha con sensores IoT, alertas, historial y reportes para silos, galpones, centros de acopio y granos almacenados.",
   ogDescription:
-    "Sensores IoT, alertas e historial operativo para monitoreo postcosecha en Cochabamba y Santa Cruz.",
+    "Sensores IoT, alertas, historial operativo y reportes para monitoreo postcosecha en Cochabamba y Santa Cruz, Bolivia.",
   keywords: [
     "AgroEscudo",
     "AgroEscudo Bolivia",
@@ -23,6 +23,16 @@ export const siteConfig = {
     "tecnología postcosecha Bolivia",
     "IoT agrícola Bolivia",
     "monitoreo de centros de acopio",
+    "monitoreo postcosecha",
+    "almacenamiento de granos Bolivia",
+    "silos agrícolas Bolivia",
+    "sensores de temperatura para silos",
+    "sensores de humedad para granos",
+    "alertas para silos",
+    "bitácora operativa agrícola",
+    "reportes postcosecha",
+    "AgTech Bolivia",
+    "AgroTECH Bolivia 2026",
     "prevención de pérdidas postcosecha",
     "sensores agrícolas",
     "riesgo operativo agrícola"

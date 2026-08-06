@@ -8,9 +8,14 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: siteConfig.title,
   description: siteConfig.description,
+  applicationName: siteConfig.name,
+  authors: [{ name: siteConfig.name, url: siteConfig.url }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  category: "AgTech, monitoreo postcosecha, IoT agrícola",
   keywords: [...siteConfig.keywords],
   alternates: {
-    canonical: "/"
+    canonical: siteConfig.url
   },
   robots: {
     index: true,

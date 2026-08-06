@@ -1,4 +1,6 @@
 import { absoluteUrl, siteConfig } from "@/lib/site-config";
+import { faqs } from "@/content/faqs";
+import { pressItems } from "@/content/press";
 
 const jsonLd = [
   {
@@ -17,6 +19,16 @@ const jsonLd = [
       image: absoluteUrl(siteConfig.founder.image)
     },
     sameAs: siteConfig.socialLinks.map((link) => link.href),
+    subjectOf: pressItems.map((item) => ({
+      "@type": "CreativeWork",
+      name: item.title,
+      url: item.href,
+      datePublished: item.datePublished,
+      publisher: {
+        "@type": "Organization",
+        name: item.source
+      }
+    })),
     address: {
       "@type": "PostalAddress",
       addressLocality: "Cochabamba",
@@ -50,7 +62,30 @@ const jsonLd = [
     primaryImageOfPage: {
       "@type": "ImageObject",
       url: absoluteUrl(siteConfig.ogImage)
-    }
+    },
+    about: [
+      {
+        "@type": "Thing",
+        name: "monitoreo de silos"
+      },
+      {
+        "@type": "Thing",
+        name: "granos almacenados"
+      },
+      {
+        "@type": "Thing",
+        name: "tecnología postcosecha"
+      },
+      {
+        "@type": "Thing",
+        name: "IoT agrícola Bolivia"
+      }
+    ],
+    mentions: pressItems.map((item) => ({
+      "@type": "CreativeWork",
+      name: item.title,
+      url: item.href
+    }))
   },
   {
     "@context": "https://schema.org",
@@ -68,6 +103,30 @@ const jsonLd = [
     })),
     description:
       "Monitoreo de temperatura y humedad en silos, galpones y centros de acopio con alertas, historial operativo y reportes."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer
+      }
+    }))
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Inicio",
+        item: siteConfig.url
+      }
+    ]
   }
 ];
 
