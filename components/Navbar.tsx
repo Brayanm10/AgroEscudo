@@ -24,7 +24,7 @@ export function Navbar({ locale }: { locale: Locale }) {
         <Link href={home} className="shrink-0 bg-white px-2.5 py-2 focus:outline-none focus:ring-2 focus:ring-brandAmber" aria-label={copy.home}>
           <Image src="/images/logo-horizontal-clean.webp" alt="AgroEscudo" width={1432} height={416} priority sizes="(max-width: 639px) 148px, 168px" className="h-auto w-[148px] sm:w-[168px]" />
         </Link>
-        <div className="ml-auto hidden items-center gap-3 xl:flex">{navItems.map((item) => <a key={item.href} href={item.href} className={`nav-link text-[13px] font-black ${solid ? "text-brandMuted" : "text-white/78"}`}>{item.label}</a>)}</div>
+        <div className="ml-auto hidden items-center gap-3 xl:flex">{navItems.map((item) => <a key={item.href} href={item.href} className={`nav-link text-[13px] font-black ${solid ? "text-brandMuted" : "text-white/80"}`}>{item.label}</a>)}</div>
         <div className="ml-auto hidden items-center gap-2 lg:flex xl:ml-1">
           <LanguageSwitcher locale={locale} light={!solid} />
           <a href={siteConfig.platformUrl} target="_blank" rel="noreferrer" className={`inline-flex min-h-11 items-center gap-2 px-3 text-sm font-black transition ${solid ? "text-brandGreenDark hover:bg-brandField" : "text-white hover:bg-white/10"}`}>{copy.login}<ExternalLink size={15} aria-hidden="true" /></a>
