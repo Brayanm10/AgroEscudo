@@ -14,7 +14,8 @@ export function CTASection({ locale }: { locale: Locale }) {
           <h2 className="mt-4 max-w-4xl text-3xl font-black leading-tight text-brandInk sm:text-4xl">
             {copy.title}
           </h2>
-          <p className="mt-4 flex items-center gap-2 text-sm font-bold text-brandGreenDark/70"><MapPin size={17} aria-hidden="true" /> {copy.location}</p>
+          <p className="mt-4 max-w-2xl text-sm font-semibold leading-7 text-brandInk/80">{copy.copy}</p>
+          <p className="mt-4 flex items-center gap-2 text-sm font-bold text-brandInk/75"><MapPin size={17} aria-hidden="true" /> {copy.location}</p>
         </div>
         <div className="reveal-on-scroll flex flex-col gap-3 sm:flex-row lg:flex-col">
           <a href={siteConfig.whatsappUrl} className="btn-primary min-w-56"><MessageCircle size={18} aria-hidden="true" /> WhatsApp</a>

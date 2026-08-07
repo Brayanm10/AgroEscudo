@@ -27,7 +27,7 @@ export function LanguageSwitcher({ locale, light = false }: { locale: Locale; li
     <div ref={rootRef} className="relative">
       <button
         type="button"
-        aria-label="Cambiar idioma / Change language / Simi tikray"
+        aria-label={`${localeLabels[locale].short}: Cambiar idioma / Change language / Simi tikray`}
         aria-haspopup="menu"
         aria-expanded={open}
         onClick={() => setOpen((value) => !value)}

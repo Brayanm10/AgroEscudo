@@ -1,91 +1,36 @@
 import Image from "next/image";
-import { ArrowDown, MapPin, MessageCircle, Radio, ThermometerSun, Waves } from "lucide-react";
+import { ArrowDown, ExternalLink, MapPin, MessageCircle } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 import { getMessages, type Locale } from "@/lib/i18n";
 
 export function Hero({ locale }: { locale: Locale }) {
   const copy = getMessages(locale).hero;
   return (
-    <section className="hero-shell relative isolate min-h-[calc(100svh-5rem)] overflow-hidden bg-brandInk text-white">
-      <Image
-        src="/images/hero-agroescudo-silo.webp"
-        alt={copy.alt}
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover object-[64%_center] sm:object-center"
-      />
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(3,25,20,.96)_0%,rgba(3,31,22,.88)_36%,rgba(3,31,22,.32)_68%,rgba(3,31,22,.12)_100%)]" />
-      <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(3,31,22,.72)_0%,transparent_42%)]" />
+    <section className="hero-shell relative isolate min-h-[calc(100svh-3rem)] overflow-hidden bg-brandInk text-white">
+      <Image src={siteConfig.media.hero} alt={copy.alt} fill priority fetchPriority="high" loading="eager" decoding="sync" sizes="100vw" className="hero-image object-cover object-[68%_center]" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(3,23,18,.98)_0%,rgba(3,27,21,.92)_36%,rgba(3,27,21,.44)_66%,rgba(3,27,21,.12)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(3,23,18,.82)_0%,transparent_48%)]" />
+      <div className="hero-grain absolute inset-0 opacity-30" />
 
-      <div className="container-page relative flex min-h-[100svh] flex-col justify-between pb-8 pt-28 sm:pb-11 sm:pt-32 lg:pb-14">
-        <div className="max-w-[260px] rounded-lg bg-white px-4 py-3 shadow-lift sm:max-w-[320px]">
-          <Image
-            src="/images/logo-horizontal-clean.webp"
-            alt="AgroEscudo"
-            width={1456}
-            height={416}
-            className="h-auto w-full"
-          />
-        </div>
-
-        <div className="max-w-4xl py-12 sm:py-16">
-          <p className="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.2em] text-brandAmberLight sm:text-xs">
-            <Radio size={16} aria-hidden="true" />
-            {copy.eyebrow}
-          </p>
-          <h1 className="mt-6 max-w-4xl text-[clamp(2.85rem,7vw,6.2rem)] font-black leading-[0.94] text-white">
-            {copy.title}
-          </h1>
-          <p className="mt-7 max-w-2xl text-lg font-medium leading-8 text-white/80 sm:text-xl">
-            {copy.copy}
-          </p>
-          <p className="mt-4 text-xs font-bold text-white/50">{copy.note}</p>
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <a href={siteConfig.whatsappUrl} className="btn-amber">
-              <MessageCircle size={19} aria-hidden="true" />
-              {copy.primary}
-            </a>
-            <a href="#como-funciona" className="btn-ghost-light">
-              {copy.secondary}
-              <ArrowDown size={18} aria-hidden="true" />
-            </a>
+      <div className="container-page relative flex min-h-[calc(100svh-3rem)] items-end pb-6 pt-28 sm:pb-12 lg:pb-14 lg:pt-32">
+        <div className="max-w-[980px] animate-fade-up">
+          <div className="mb-5 inline-flex bg-white px-3 py-2.5 shadow-lift sm:mb-8 sm:px-4 sm:py-3">
+            <Image src="/images/logo-horizontal-clean.webp" alt="AgroEscudo" width={1432} height={416} priority sizes="(max-width: 639px) 176px, (max-width: 1023px) 240px, 288px" className="h-auto w-44 sm:w-60 lg:w-72" />
           </div>
-          <p className="mt-5 flex items-center gap-2 pr-14 text-sm font-bold text-white/60 lg:pr-0">
-            <MapPin size={16} className="text-brandAmberLight" aria-hidden="true" />
-            {copy.location}
-          </p>
-        </div>
-
-        <div className="grid max-w-3xl grid-cols-3 divide-x divide-white/20 border-t border-white/20 bg-brandInk/40 backdrop-blur-md">
-          <HeroReading icon={ThermometerSun} label={copy.readings[0][0]} value={copy.readings[0][1]} />
-          <HeroReading icon={Waves} label={copy.readings[1][0]} value={copy.readings[1][1]} />
-          <HeroReading icon={Radio} label={copy.readings[2][0]} value={copy.readings[2][1]} live />
+          <p className="inline-flex items-center gap-2 border-l-2 border-brandAmberLight pl-3 text-[11px] font-black uppercase tracking-[0.17em] text-brandAmberLight sm:text-xs">{copy.eyebrow}</p>
+          <h1 className="mt-5 max-w-[960px] text-[clamp(2.75rem,7.2vw,7.1rem)] font-black leading-[.88] text-white sm:mt-6">{copy.title}</h1>
+          <p className="mt-5 max-w-2xl text-sm font-medium leading-7 text-white/76 sm:mt-7 sm:text-xl sm:leading-8">{copy.copy}</p>
+          <p className="mt-4 text-[10px] font-black uppercase tracking-[0.08em] text-white/50 sm:mt-5 sm:text-xs">{copy.microcopy}</p>
+          <div className="hero-actions mt-6 gap-3 sm:mt-8 sm:flex sm:flex-row sm:flex-wrap">
+            <a href={siteConfig.technicalVisitUrl} className="btn-amber"><MessageCircle size={18} aria-hidden="true" />{copy.primary}</a>
+            <a href="#como-funciona" className="btn-ghost-light">{copy.secondary}<ArrowDown size={18} aria-hidden="true" /></a>
+            <a href={siteConfig.platformUrl} target="_blank" rel="noreferrer" className="hero-login-link">{copy.tertiary}<ExternalLink size={16} aria-hidden="true" /></a>
+          </div>
+          <div className="mt-8 flex flex-col gap-2 text-xs font-semibold text-white/48 sm:flex-row sm:items-center sm:gap-6">
+            <span>{copy.note}</span><span className="hidden items-center gap-2 sm:inline-flex"><MapPin size={14} className="text-brandAmberLight" aria-hidden="true" />{copy.location}</span>
+          </div>
         </div>
       </div>
     </section>
-  );
-}
-
-function HeroReading({
-  icon: Icon,
-  label,
-  value,
-  live = false
-}: {
-  icon: typeof Radio;
-  label: string;
-  value: string;
-  live?: boolean;
-}) {
-  return (
-    <div className="min-w-0 px-3 py-4 sm:px-5">
-      <div className="flex items-center gap-2 text-brandAmberLight">
-        <Icon size={17} aria-hidden="true" />
-        {live ? <span className="status-pulse h-2 w-2 rounded-full bg-emerald-300" /> : null}
-      </div>
-      <p className="mt-3 text-[10px] font-black uppercase tracking-[0.14em] text-white/50">{label}</p>
-      <p className="mt-1 truncate text-xs font-black text-white sm:text-sm">{value}</p>
-    </div>
   );
 }

@@ -1,8 +1,7 @@
-import { ClientsSection } from "@/components/ClientsSection";
-import { CapabilityStrip } from "@/components/CapabilityStrip";
+import { AgrotechSection } from "@/components/AgrotechSection";
+import { CredibilityStrip } from "@/components/CredibilityStrip";
 import { CTASection } from "@/components/CTASection";
 import { EcosystemSection } from "@/components/EcosystemSection";
-import { FAQSection } from "@/components/FAQSection";
 import { Footer } from "@/components/Footer";
 import { FounderSection } from "@/components/FounderSection";
 import { Hero } from "@/components/Hero";
@@ -12,9 +11,9 @@ import { PlatformShowcase } from "@/components/PlatformShowcase";
 import { PilotSection } from "@/components/PilotSection";
 import { PressSection } from "@/components/PressSection";
 import { ProblemSection } from "@/components/ProblemSection";
-import { ProgressSection } from "@/components/ProgressSection";
-import { SolutionSection } from "@/components/SolutionSection";
+import { ProductSection } from "@/components/ProductSection";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
+import { WhySection } from "@/components/WhySection";
 import { JsonLd } from "@/components/seo/JsonLd";
 import type { Locale } from "@/lib/i18n";
 
@@ -25,22 +24,27 @@ export function LandingPage({ locale }: { locale: Locale }) {
       <Navbar locale={locale} />
       <main>
         <Hero locale={locale} />
-        <CapabilityStrip locale={locale} />
+        <CredibilityStrip locale={locale} />
         <ProblemSection locale={locale} />
-        <SolutionSection locale={locale} />
+        <ProductSection locale={locale} />
         <HowItWorks locale={locale} />
         <PlatformShowcase locale={locale} />
-        <ProgressSection locale={locale} />
+        <WhySection locale={locale} />
         <FounderSection locale={locale} />
         <EcosystemSection locale={locale} />
-        <ClientsSection locale={locale} />
         <PressSection locale={locale} />
+        <AgrotechSection locale={locale} />
         <PilotSection locale={locale} />
-        <FAQSection locale={locale} />
         <CTASection locale={locale} />
       </main>
       <Footer locale={locale} />
-      <WhatsAppFloat label={locale === "en" ? "Talk with AgroEscudo" : locale === "qu-BO" ? "AgroEscudowan rimay" : "Hablar con AgroEscudo"} />
+      <WhatsAppFloat label={getWhatsappLabel(locale)} />
     </div>
   );
+}
+
+function getWhatsappLabel(locale: Locale) {
+  if (locale === "en") return "Talk with AgroEscudo";
+  if (locale === "qu-BO") return "AgroEscudowan rimay";
+  return "Hablar con AgroEscudo";
 }

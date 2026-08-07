@@ -45,13 +45,14 @@ export const siteConfig = {
     "https://wa.me/59179366846?text=Hola%2C%20conoc%C3%AD%20AgroEscudo%20mediante%20su%20p%C3%A1gina%20web.%20Me%20interesa%20conocer%20el%20sistema%20de%20monitoreo%20para%20silos%20o%20almacenamiento%20de%20granos%20y%20coordinar%20una%20demostraci%C3%B3n.",
   technicalVisitUrl:
     "https://wa.me/59179366846?text=Hola%20AgroEscudo%2C%20quiero%20agendar%20una%20visita%20t%C3%A9cnica",
+  platformUrl: "https://agroescudobo.vercel.app",
   qrWhatsappUrl:
     "https://wa.me/59179366846?text=Hola%20AgroEscudo%2C%20escane%C3%A9%20el%20QR%20y%20quiero%20conocer%20el%20sistema%20y%20solicitar%20una%20evaluaci%C3%B3n",
   emailUrl: "mailto:agroescudo@gmail.com?subject=Solicitud%20de%20piloto%20AgroEscudo",
   logo: "/logo-mark.png",
   ogImage: "/images/og-agroescudo.webp",
   media: {
-    hero: "/images/hero-agroescudo-silo.webp",
+    hero: "/images/hero-silo-sensor-concept.webp",
     dashboard: "/images/platform-dashboard.webp",
     pressSocial: "/images/press-la-razon-social.webp",
     pressCover: "/images/press-la-razon-cover.webp",

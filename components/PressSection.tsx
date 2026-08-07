@@ -27,7 +27,6 @@ export function PressSection({ locale }: { locale: Locale }) {
             target="_blank"
             rel="noreferrer"
             className="press-feature reveal-on-scroll group relative min-h-[620px] overflow-hidden rounded-lg bg-brandInk shadow-lift"
-            aria-label={`${copy.readAria} ${featuredPress.source}`}
           >
             <Image
               src={featuredPress.image ?? "/images/press-la-razon-social.webp"}

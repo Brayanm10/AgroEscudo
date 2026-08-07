@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { BellRing, ChartNoAxesCombined, FileText, History } from "lucide-react";
 import { getMessages, type Locale } from "@/lib/i18n";
+import { siteConfig } from "@/lib/site-config";
 
 const icons = [ChartNoAxesCombined, BellRing, History, FileText];
 
@@ -27,6 +28,10 @@ export function PlatformShowcase({ locale }: { locale: Locale }) {
                 );
               })}
             </div>
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
+              <a href={siteConfig.platformUrl} target="_blank" rel="noreferrer" className="btn-amber">{copy.login}</a>
+              <a href={siteConfig.whatsappUrl} className="btn-ghost-light">{copy.demo}</a>
+            </div>
           </div>
 
           <div className="reveal-on-scroll lg:translate-x-8">
@@ -35,7 +40,7 @@ export function PlatformShowcase({ locale }: { locale: Locale }) {
                 <span className="h-2.5 w-2.5 rounded-full bg-[#d85b4f]" />
                 <span className="h-2.5 w-2.5 rounded-full bg-brandAmber" />
                 <span className="h-2.5 w-2.5 rounded-full bg-[#4a9f71]" />
-                <span className="ml-3 text-[10px] font-bold text-black/40">{copy.window}</span>
+                <span className="ml-3 text-[10px] font-bold text-brandMuted">{copy.window}</span>
               </div>
               <Image
                 src="/images/platform-dashboard.webp"

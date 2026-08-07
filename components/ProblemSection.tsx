@@ -6,24 +6,24 @@ const signalIcons = [ThermometerSun, Droplets, Activity];
 export function ProblemSection({ locale }: { locale: Locale }) {
   const copy = getMessages(locale).problem;
   return (
-    <section id="problema" className="section-band overflow-hidden bg-white">
+    <section id="problema" className="section-band overflow-hidden bg-brandInk text-white">
       <div className="container-page">
         <div className="grid gap-12 lg:grid-cols-[1.08fr_.92fr] lg:items-center">
           <div className="reveal-on-scroll max-w-4xl">
-            <p className="eyebrow">{copy.eyebrow}</p>
-            <h2 className="section-title mt-5">{copy.title}</h2>
-            <p className="section-copy mt-7">
+            <p className="text-[11px] font-black uppercase tracking-[0.18em] text-brandAmberLight">{copy.eyebrow}</p>
+            <h2 className="mt-5 max-w-4xl text-[clamp(2.5rem,5vw,5rem)] font-black leading-[.96] text-white">{copy.title}</h2>
+            <p className="mt-7 max-w-2xl text-lg leading-8 text-white/68">
               {copy.copy}
             </p>
             <div className="mt-9 flex items-start gap-4 border-l-2 border-brandAmber pl-5">
-              <Clock3 className="mt-1 shrink-0 text-brandGreen" size={22} aria-hidden="true" />
-              <p className="max-w-xl text-base font-bold leading-7 text-brandText">
+              <Clock3 className="mt-1 shrink-0 text-brandAmberLight" size={22} aria-hidden="true" />
+              <p className="max-w-xl text-base font-bold leading-7 text-white">
                 {copy.support}
               </p>
             </div>
           </div>
 
-          <div className="reveal-on-scroll relative min-h-[420px] overflow-hidden rounded-lg bg-[linear-gradient(145deg,#f3e4bf_0%,#d6a84f_46%,#7a4f16_100%)] p-6 shadow-lift sm:p-8">
+          <div className="reveal-on-scroll relative min-h-[390px] overflow-hidden border border-white/15 bg-[linear-gradient(145deg,#f3e4bf_0%,#d6a84f_46%,#7a4f16_100%)] p-6 shadow-lift sm:p-8">
             <div className="grain-texture absolute inset-0 opacity-55" />
             <div className="absolute inset-x-0 bottom-0 h-2/3 bg-[linear-gradient(0deg,rgba(3,31,22,.84),transparent)]" />
             <div className="relative flex h-full min-h-[356px] flex-col justify-end">
