@@ -35,7 +35,7 @@ export function SystemArchitecture({ locale = "es-BO" }: { compact?: boolean; lo
             ))}
             <rect x="112" y="155" width="266" height="50" rx="6" fill="#073E32" />
             <text x="245" y="187" fill="white" textAnchor="middle" className="svg-label-small">{labels.probes}</text>
-            <text x="245" y="650" fill="#10231C" textAnchor="middle" className="svg-label">{labels.silo}</text>
+            <text x="245" y="620" fill="#10231C" textAnchor="middle" className="svg-label">{labels.silo}</text>
           </g>
 
           <g transform="translate(500 205)" filter="url(#shadowDesk)">
@@ -97,7 +97,7 @@ export function SystemArchitecture({ locale = "es-BO" }: { compact?: boolean; lo
           </g>
         </svg>
 
-        <svg className="architecture-mobile" viewBox="0 0 390 1260" aria-hidden="true">
+        <svg className="architecture-mobile" viewBox="0 0 390 1360" aria-hidden="true">
           <defs>
             <linearGradient id="grainMobile" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#F4C75F" /><stop offset="1" stopColor="#D89519" /></linearGradient>
             <marker id="arrowMobile" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#0B6B50" /></marker>
@@ -114,11 +114,12 @@ export function SystemArchitecture({ locale = "es-BO" }: { compact?: boolean; lo
           </g>
           <line x1="195" y1="493" x2="195" y2="548" stroke="#0B6B50" strokeWidth="6" markerEnd="url(#arrowMobile)" />
           <g transform="translate(112 565)"><rect width="166" height="132" rx="22" fill="#073E32" stroke="#F2C66D" strokeWidth="4" /><path d="M50 45h66M60 69h46" stroke="#F2C66D" strokeWidth="7" strokeLinecap="round" /><circle cx="83" cy="100" r="14" fill="#fff" /><text x="83" y="162" textAnchor="middle" className="svg-label-mobile-strong">{labels.node}</text></g>
-          <path d="M150 754q45-45 90 0M165 772q30-27 60 0" fill="none" stroke="#D69A27" strokeWidth="6" strokeLinecap="round" /><text x="195" y="727" textAnchor="middle" className="svg-kicker-mobile">{labels.lora}</text>
-          <line x1="195" y1="788" x2="195" y2="838" stroke="#0B6B50" strokeWidth="6" markerEnd="url(#arrowMobile)" /><circle className="architecture-packet-mobile" cx="195" cy="802" r="7" fill="#F2C66D" />
-          <g transform="translate(120 854)"><rect width="150" height="150" rx="26" fill="#fff" stroke="#0B6B50" strokeWidth="6" /><path className="gateway-sync" d="M42 58q33-38 66 0M56 76q19-20 38 0" fill="none" stroke="#D69A27" strokeWidth="7" strokeLinecap="round" /><rect x="48" y="94" width="54" height="34" rx="9" fill="#073E32" /><circle cx="62" cy="111" r="5" fill="#6EE7B7" /><text x="75" y="180" textAnchor="middle" className="svg-label-mobile-strong">{labels.gateway}</text><text x="75" y="203" textAnchor="middle" className="svg-detail-mobile">{labels.gatewayDetail}</text></g>
-          <line x1="195" y1="1065" x2="195" y2="1115" stroke="#0B6B50" strokeWidth="6" markerEnd="url(#arrowMobile)" />
-          <g transform="translate(32 1132)"><rect width="326" height="100" rx="20" fill="#073E32" /><circle cx="54" cy="50" r="30" fill="#F2C66D" /><text x="54" y="57" fill="#073E32" textAnchor="middle" className="svg-label-mobile">API</text><text x="102" y="40" fill="white" className="svg-label-mobile-strong">{labels.cloud}</text><text x="102" y="66" fill="#B9C9C3" className="svg-detail-mobile">{labels.cloudDetail}</text><g className="architecture-alert"><rect x="260" y="18" width="46" height="64" rx="8" fill="#fff" /><circle cx="295" cy="20" r="10" fill="#D94F3D" stroke="#fff" strokeWidth="3" /><path d="M270 55h25M270 66h18" stroke="#0B6B50" strokeWidth="4" strokeLinecap="round" /></g></g>
+          <text x="195" y="768" textAnchor="middle" className="svg-kicker-mobile">{labels.lora}</text>
+          <path d="M150 830q45-45 90 0M165 848q30-27 60 0" fill="none" stroke="#D69A27" strokeWidth="6" strokeLinecap="round" />
+          <line x1="195" y1="862" x2="195" y2="912" stroke="#0B6B50" strokeWidth="6" markerEnd="url(#arrowMobile)" /><circle className="architecture-packet-mobile" cx="195" cy="876" r="7" fill="#F2C66D" />
+          <g transform="translate(120 930)"><rect width="150" height="150" rx="26" fill="#fff" stroke="#0B6B50" strokeWidth="6" /><path className="gateway-sync" d="M42 58q33-38 66 0M56 76q19-20 38 0" fill="none" stroke="#D69A27" strokeWidth="7" strokeLinecap="round" /><rect x="48" y="94" width="54" height="34" rx="9" fill="#073E32" /><circle cx="62" cy="111" r="5" fill="#6EE7B7" /><text x="75" y="180" textAnchor="middle" className="svg-label-mobile-strong">{labels.gateway}</text><text x="75" y="203" textAnchor="middle" className="svg-detail-mobile">{labels.gatewayDetail}</text></g>
+          <line x1="195" y1="1155" x2="195" y2="1205" stroke="#0B6B50" strokeWidth="6" markerEnd="url(#arrowMobile)" />
+          <g transform="translate(32 1222)"><rect width="326" height="100" rx="20" fill="#073E32" /><circle cx="54" cy="50" r="30" fill="#F2C66D" /><text x="54" y="57" fill="#073E32" textAnchor="middle" className="svg-label-mobile">API</text><text x="102" y="40" className="svg-label-mobile-on-dark">{labels.cloud}</text><text x="102" y="66" className="svg-detail-mobile-on-dark">{labels.cloudDetail}</text><g className="architecture-alert"><rect x="260" y="18" width="46" height="64" rx="8" fill="#fff" /><circle cx="295" cy="20" r="10" fill="#D94F3D" stroke="#fff" strokeWidth="3" /><path d="M270 55h25M270 66h18" stroke="#0B6B50" strokeWidth="4" strokeLinecap="round" /></g></g>
         </svg>
       </div>
 

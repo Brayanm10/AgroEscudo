@@ -14,6 +14,7 @@ import { ProblemSection } from "@/components/ProblemSection";
 import { ProductSection } from "@/components/ProductSection";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { WhySection } from "@/components/WhySection";
+import { VideoShowcase } from "@/components/VideoShowcase";
 import { JsonLd } from "@/components/seo/JsonLd";
 import type { Locale } from "@/lib/i18n";
 
@@ -25,6 +26,7 @@ export function LandingPage({ locale }: { locale: Locale }) {
       <main>
         <Hero locale={locale} />
         <CredibilityStrip locale={locale} />
+        <VideoShowcase locale={locale} />
         <ProblemSection locale={locale} />
         <ProductSection locale={locale} />
         <HowItWorks locale={locale} />

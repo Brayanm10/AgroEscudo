@@ -165,6 +165,11 @@ textarea {
   78% { transform: translateY(0); opacity: 1; }
 }
 
+@keyframes film-rail-travel {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .animate-fade-up {
     animation: fade-up 720ms ease both;
@@ -235,6 +240,160 @@ textarea {
     transform-box: fill-box;
     transform-origin: center;
   }
+
+  .film-rail-track {
+    animation: film-rail-travel 20s linear infinite;
+  }
+}
+
+.hero-brand {
+  border: 1px solid rgba(255,255,255,.16);
+  background: rgba(3,31,22,.62);
+  padding: .5rem .85rem .5rem .5rem;
+  box-shadow: 0 18px 50px rgba(0,0,0,.2);
+  backdrop-filter: blur(14px);
+}
+
+.hero-brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  padding: .3rem;
+}
+
+.credibility-item {
+  transition: background-color .25s ease;
+}
+
+.credibility-item:hover {
+  background: rgba(255,255,255,.045);
+}
+
+.film-section {
+  position: relative;
+  border-bottom: 1px solid rgba(242,198,109,.18);
+}
+
+.film-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .16;
+  background-image:
+    linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+.film-frame {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(242,198,109,.4);
+  background: #000;
+  box-shadow: 0 34px 90px rgba(0,0,0,.38);
+}
+
+.film-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 8px solid rgba(255,255,255,.035);
+  pointer-events: none;
+}
+
+.film-controls {
+  position: absolute;
+  z-index: 2;
+  right: 1rem;
+  bottom: 1rem;
+  display: flex;
+  gap: .5rem;
+}
+
+.film-control {
+  display: inline-flex;
+  width: 2.75rem;
+  height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255,255,255,.22);
+  background: rgba(3,31,22,.78);
+  color: white;
+  backdrop-filter: blur(12px);
+  transition: background-color .2s ease, transform .2s ease;
+}
+
+.film-control:hover {
+  background: #f2c66d;
+  color: #071d18;
+  transform: translateY(-2px);
+}
+
+.film-control:focus-visible {
+  outline: 3px solid #f2c66d;
+  outline-offset: 3px;
+}
+
+.film-live {
+  position: absolute;
+  z-index: 2;
+  top: 1rem;
+  left: 1rem;
+  display: inline-flex;
+  min-height: 2rem;
+  align-items: center;
+  gap: .5rem;
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(3,31,22,.78);
+  padding: .35rem .7rem;
+  color: white;
+  font-size: .65rem;
+  font-weight: 900;
+  letter-spacing: .14em;
+  backdrop-filter: blur(12px);
+}
+
+.film-live span {
+  width: .5rem;
+  height: .5rem;
+  border-radius: 999px;
+  background: #e95b4f;
+  box-shadow: 0 0 0 4px rgba(233,91,79,.18);
+}
+
+.film-rail {
+  overflow: hidden;
+  border-block: 1px solid rgba(255,255,255,.12);
+  margin-top: 1.5rem;
+  padding-block: .9rem;
+}
+
+.film-rail-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+.film-rail-track span {
+  display: inline-flex;
+  min-width: max-content;
+  align-items: center;
+  gap: 1.75rem;
+  padding-right: 1.75rem;
+  color: rgba(255,255,255,.72);
+  font-size: .7rem;
+  font-weight: 900;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+
+.film-rail-track i {
+  width: .45rem;
+  height: .45rem;
+  border-radius: 999px;
+  background: #f2c66d;
 }
 
 .hero-grain {
@@ -336,6 +495,16 @@ textarea {
   fill: #4c5a54;
 }
 
+.svg-label-mobile-on-dark {
+  font: 900 17px Inter, ui-sans-serif, system-ui, sans-serif;
+  fill: #ffffff;
+}
+
+.svg-detail-mobile-on-dark {
+  font: 700 12px Inter, ui-sans-serif, system-ui, sans-serif;
+  fill: #b9c9c3;
+}
+
 .svg-kicker-mobile {
   font: 900 15px Inter, ui-sans-serif, system-ui, sans-serif;
   fill: #0b6b50;
@@ -356,7 +525,11 @@ textarea {
 }
 
 .architecture-platform-label {
-  margin-left: auto;
+  order: -1;
+  width: 100%;
+  margin-left: 0;
+  padding-bottom: .75rem;
+  border-bottom: 1px solid rgba(11,107,80,.1);
   color: #073e32;
 }
 
@@ -365,7 +538,9 @@ textarea {
   .architecture-desktop { display: none; }
   .architecture-mobile { display: block; }
   .architecture-stage { background-size: 32px 32px; }
-  .architecture-platform-label { width: 100%; margin-left: 0; padding-top: .65rem; border-top: 1px solid rgba(11,107,80,.1); }
+  .architecture-platform-label { padding-top: 0; border-top: 0; }
+  .film-controls { right: .65rem; bottom: .65rem; }
+  .film-live { top: .65rem; left: .65rem; }
 }
 
 @media (min-width: 640px) {

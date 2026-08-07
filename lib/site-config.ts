@@ -49,10 +49,11 @@ export const siteConfig = {
   qrWhatsappUrl:
     "https://wa.me/59179366846?text=Hola%20AgroEscudo%2C%20escane%C3%A9%20el%20QR%20y%20quiero%20conocer%20el%20sistema%20y%20solicitar%20una%20evaluaci%C3%B3n",
   emailUrl: "mailto:agroescudo@gmail.com?subject=Solicitud%20de%20piloto%20AgroEscudo",
-  logo: "/logo-mark.png",
+  logo: "/logo-mark-512.png",
   ogImage: "/images/og-agroescudo.webp",
   media: {
     hero: "/images/hero-silo-sensor-concept.webp",
+    productFilm: "/media/agroescudo-sistema.mp4",
     dashboard: "/images/platform-dashboard.webp",
     pressSocial: "/images/press-la-razon-social.webp",
     pressCover: "/images/press-la-razon-cover.webp",
