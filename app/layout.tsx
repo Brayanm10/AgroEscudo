@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { DocumentLanguage } from "@/components/DocumentLanguage";
 import { absoluteUrl, siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
@@ -64,7 +65,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang={siteConfig.language}>
-      <body>{children}</body>
+      <body><DocumentLanguage />{children}</body>
     </html>
   );
 }

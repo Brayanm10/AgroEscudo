@@ -2,20 +2,22 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Newspaper } from "lucide-react";
 import { featuredPress, pressItems } from "@/content/press";
+import { getMessages, type Locale } from "@/lib/i18n";
 
 const secondaryPress = pressItems.filter((item) => item.id !== featuredPress.id).slice(0, 5);
 
-export function PressSection() {
+export function PressSection({ locale }: { locale: Locale }) {
+  const copy = getMessages(locale).press;
   return (
     <section id="prensa" className="section-band overflow-hidden bg-white">
       <div className="container-page">
         <div className="grid gap-10 lg:grid-cols-[.82fr_1.18fr] lg:items-end">
           <div className="reveal-on-scroll">
-            <p className="eyebrow">Prensa, reconocimientos y cobertura</p>
-            <h2 className="section-title mt-5">AgroEscudo en el ecosistema de innovación.</h2>
+            <p className="eyebrow">{copy.eyebrow}</p>
+            <h2 className="section-title mt-5">{copy.title}</h2>
           </div>
           <p className="section-copy reveal-on-scroll">
-            Cobertura, reconocimiento y participación pública de una tecnología boliviana enfocada en reducir el riesgo postcosecha con monitoreo de silos, galpones y centros de acopio.
+            {copy.copy}
           </p>
         </div>
 
@@ -25,7 +27,7 @@ export function PressSection() {
             target="_blank"
             rel="noreferrer"
             className="press-feature reveal-on-scroll group relative min-h-[620px] overflow-hidden rounded-lg bg-brandInk shadow-lift"
-            aria-label={`Leer cobertura de AgroEscudo en ${featuredPress.source}`}
+            aria-label={`${copy.readAria} ${featuredPress.source}`}
           >
             <Image
               src={featuredPress.image ?? "/images/press-la-razon-social.webp"}
@@ -45,8 +47,8 @@ export function PressSection() {
           </a>
 
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-1">
-            <PressEvidence image="/images/press-la-razon-cover.webp" alt="Portada de Energías y Negocios con AgroEscudo" label="Portada del suplemento" href={featuredPress.href} />
-            <PressEvidence image="/images/press-la-razon-article.webp" alt="Página de la entrevista de AgroEscudo en La Razón" label="Entrevista publicada" href={pressItems[1].href} />
+            <PressEvidence image="/images/press-la-razon-cover.webp" alt="Portada de Energías y Negocios con AgroEscudo" label={copy.cover} evidence={copy.evidence} note={copy.sourceNote} href={featuredPress.href} />
+            <PressEvidence image="/images/press-la-razon-article.webp" alt="Página de la entrevista de AgroEscudo en La Razón" label={copy.article} evidence={copy.evidence} note={copy.sourceNote} href={pressItems[1].href} />
           </div>
         </div>
 
@@ -59,7 +61,7 @@ export function PressSection() {
                 <p className="mt-3 text-xs font-semibold leading-5 text-brandMuted">{item.type} · {item.date}</p>
               </div>
               <span className="mt-5 inline-flex items-center gap-2 text-sm font-black text-brandGreenDark">
-                {item.cta} <ArrowUpRight size={16} aria-hidden="true" />
+                {copy.open} <ArrowUpRight size={16} aria-hidden="true" />
               </span>
             </a>
           ))}
@@ -69,12 +71,12 @@ export function PressSection() {
           <div className="flex items-center gap-4">
             <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-brandGreenDark text-brandAmberLight"><Newspaper size={20} aria-hidden="true" /></span>
             <div>
-              <p className="text-sm font-black text-brandText">Más cobertura indexable de AgroEscudo</p>
-              <p className="mt-1 text-xs leading-5 text-brandMuted">Prensa, reconocimientos y participación pública, separados de clientes, inversión o certificaciones.</p>
+              <p className="text-sm font-black text-brandText">{copy.more}</p>
+              <p className="mt-1 text-xs leading-5 text-brandMuted">{copy.moreCopy}</p>
             </div>
           </div>
           <Link href="/prensa" className="inline-flex items-center gap-2 text-sm font-black text-brandGreen hover:text-brandGreenDark">
-            Ver página de prensa <ArrowUpRight size={17} aria-hidden="true" />
+            {copy.moreLink} <ArrowUpRight size={17} aria-hidden="true" />
           </Link>
         </div>
       </div>
@@ -82,17 +84,17 @@ export function PressSection() {
   );
 }
 
-function PressEvidence({ image, alt, label, href }: { image: string; alt: string; label: string; href: string }) {
+function PressEvidence({ image, alt, label, evidence, note, href }: { image: string; alt: string; label: string; evidence: string; note: string; href: string }) {
   return (
     <a href={href} target="_blank" rel="noreferrer" className="reveal-on-scroll group grid min-h-[298px] grid-cols-[.44fr_.56fr] overflow-hidden rounded-lg border border-brandGreen/10 bg-brandField shadow-soft transition hover:border-brandAmber/50 hover:shadow-lift">
       <div className="relative min-h-full bg-white">
         <Image src={image} alt={alt} fill sizes="(max-width: 640px) 44vw, 22vw" className="object-cover object-top" />
       </div>
       <div className="flex flex-col justify-between p-5">
-        <p className="text-[10px] font-black uppercase tracking-[0.16em] text-brandGreen">Evidencia editorial</p>
+        <p className="text-[10px] font-black uppercase tracking-[0.16em] text-brandGreen">{evidence}</p>
         <div>
           <h3 className="text-xl font-black text-brandText">{label}</h3>
-          <p className="mt-3 text-sm leading-6 text-brandMuted">Ver la publicación en su fuente original.</p>
+          <p className="mt-3 text-sm leading-6 text-brandMuted">{note}</p>
         </div>
         <ArrowUpRight size={20} className="text-brandGreen transition group-hover:-translate-y-1 group-hover:translate-x-1" aria-hidden="true" />
       </div>

@@ -25,6 +25,8 @@ Abre estas URLs después del deploy:
 
 ```text
 https://agroescudo.vercel.app/
+https://agroescudo.vercel.app/en
+https://agroescudo.vercel.app/qu
 https://agroescudo.vercel.app/robots.txt
 https://agroescudo.vercel.app/sitemap.xml
 ```
@@ -34,7 +36,8 @@ Verifica que:
 - La home carga correctamente.
 - La ruta pública `/qr` carga correctamente.
 - `robots.txt` permite indexar la landing.
-- `sitemap.xml` contiene la home y `https://agroescudo.vercel.app/qr`.
+- `sitemap.xml` contiene la home, `/en`, `/qu`, `/qr` y `/prensa`.
+- Las páginas `/`, `/en` y `/qu` incluyen canonical y enlaces alternativos `hreflang`.
 
 ## 3. Registrar en Google Search Console
 
@@ -81,6 +84,16 @@ https://agroescudo.vercel.app
 
 3. Pulsa `Solicitar indexación`.
 4. No repitas la solicitud todos los días; espera a que Google rastree.
+
+Repite la inspección una sola vez para estas URLs:
+
+```text
+https://agroescudo.vercel.app/en
+https://agroescudo.vercel.app/qu
+https://agroescudo.vercel.app/prensa
+```
+
+La configuración técnica permite el rastreo, pero no obliga a Google a mostrar el sitio inmediatamente. La indexación puede tardar varios días o semanas, especialmente en un dominio nuevo. Search Console es el paso que confirma el descubrimiento y muestra cualquier motivo de exclusión.
 
 ## 6. Registrar en Bing Webmaster Tools
 

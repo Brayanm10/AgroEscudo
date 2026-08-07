@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Building2, GraduationCap, Network, ShieldCheck } from "lucide-react";
 import { institutions } from "@/lib/institutions";
+import { getMessages, type Locale } from "@/lib/i18n";
 
 const categoryIcons = {
   Preaceleración: Network,
@@ -11,16 +12,17 @@ const categoryIcons = {
 
 const logoInstitutions = institutions.filter((institution) => institution.logo);
 
-export function EcosystemSection() {
+export function EcosystemSection({ locale }: { locale: Locale }) {
+  const copy = getMessages(locale).ecosystem;
   return (
     <section id="ecosistema" aria-labelledby="ecosistema-title" className="section-band overflow-hidden bg-[#f7faf7]">
       <div className="container-page">
         <div className="reveal-on-scroll overflow-hidden rounded-lg bg-brandGreenDark text-white shadow-lift">
           <div className="grid gap-8 px-6 py-8 sm:px-8 lg:grid-cols-[.92fr_1.08fr] lg:items-center lg:px-10 lg:py-10">
             <div>
-              <p className="text-[11px] font-black uppercase tracking-[0.18em] text-brandAmberLight">Ecosistema institucional</p>
+              <p className="text-[11px] font-black uppercase tracking-[0.18em] text-brandAmberLight">{copy.eyebrowTop}</p>
               <p className="mt-4 max-w-xl text-2xl font-black leading-tight sm:text-3xl">
-                Respaldados por un ecosistema que impulsa la innovación boliviana.
+                {copy.headline}
               </p>
             </div>
             <div className="grid grid-cols-3 gap-px overflow-hidden rounded-md bg-white/15 sm:grid-cols-6">
@@ -42,18 +44,19 @@ export function EcosystemSection() {
 
         <div className="mt-14 grid gap-8 lg:grid-cols-[.85fr_1.15fr] lg:items-end">
           <div className="reveal-on-scroll">
-            <p className="eyebrow">Organizaciones que nos respaldan</p>
+            <p className="eyebrow">{copy.eyebrow}</p>
             <h2 id="ecosistema-title" className="section-title mt-5">
-              Apoyo real para avanzar con más rigor.
+              {copy.title}
             </h2>
           </div>
           <p className="section-copy reveal-on-scroll">
-            AgroEscudo fortalece su desarrollo tecnológico, comercial y académico con el respaldo de organizaciones bolivianas vinculadas a la innovación, la incubación empresarial y la formación técnica.
+            {copy.copy}
           </p>
         </div>
 
         <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {institutions.map((institution) => {
+            const categoryIndex = ["Preaceleración", "Incubación tecnológica", "Respaldo académico", "Acompañamiento técnico"].indexOf(institution.category);
             const Icon = categoryIcons[institution.category];
             const isTextOnly = !institution.logo;
             return (
@@ -82,10 +85,10 @@ export function EcosystemSection() {
                 </div>
                 <div>
                   <div className={`${isTextOnly ? "" : "mt-6"} flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.14em] text-brandGreen`}>
-                    <Icon size={15} aria-hidden="true" /> {institution.category}
+                    <Icon size={15} aria-hidden="true" /> {copy.categories[categoryIndex]}
                   </div>
                   <h3 className="mt-3 text-xl font-black leading-tight text-brandText">{institution.shortName}</h3>
-                  <p className="mt-3 text-sm leading-6 text-brandMuted">{institution.description}</p>
+                  <p className="mt-3 text-sm leading-6 text-brandMuted">{copy.descriptions[institutions.indexOf(institution)]}</p>
                 </div>
               </article>
             );
@@ -93,7 +96,7 @@ export function EcosystemSection() {
         </div>
 
         <p className="reveal-on-scroll mt-8 border-l-2 border-brandAmber bg-white px-5 py-4 text-xs font-semibold leading-6 text-brandMuted">
-          El respaldo corresponde a procesos de acompañamiento, incubación, preaceleración y articulación institucional; no implica inversión, certificación ni relación comercial.
+          {copy.disclaimer}
         </p>
       </div>
     </section>

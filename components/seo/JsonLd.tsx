@@ -1,15 +1,18 @@
 import { absoluteUrl, siteConfig } from "@/lib/site-config";
-import { faqs } from "@/content/faqs";
 import { pressItems } from "@/content/press";
+import { getMessages, localeRoutes, type Locale } from "@/lib/i18n";
 
-const jsonLd = [
+export function JsonLd({ locale }: { locale: Locale }) {
+  const messages = getMessages(locale);
+  const pageUrl = absoluteUrl(localeRoutes[locale]);
+  const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: siteConfig.name,
     url: siteConfig.url,
     logo: absoluteUrl(siteConfig.logo),
-    description: siteConfig.description,
+    description: messages.meta.description,
     email: siteConfig.email,
     telephone: siteConfig.phone,
     founder: {
@@ -44,16 +47,16 @@ const jsonLd = [
     "@type": "WebSite",
     name: siteConfig.name,
     url: siteConfig.url,
-    inLanguage: siteConfig.language,
-    description: siteConfig.description
+    inLanguage: locale,
+    description: messages.meta.description
   },
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: siteConfig.title,
-    url: siteConfig.url,
-    inLanguage: siteConfig.language,
-    description: siteConfig.description,
+    name: messages.meta.title,
+    url: pageUrl,
+    inLanguage: locale,
+    description: messages.meta.description,
     isPartOf: {
       "@type": "WebSite",
       name: siteConfig.name,
@@ -107,12 +110,12 @@ const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: faqs.map((faq) => ({
+    mainEntity: messages.faq.items.map(([question, answer]) => ({
       "@type": "Question",
-      name: faq.question,
+      name: question,
       acceptedAnswer: {
         "@type": "Answer",
-        text: faq.answer
+        text: answer
       }
     }))
   },
@@ -123,14 +126,12 @@ const jsonLd = [
       {
         "@type": "ListItem",
         position: 1,
-        name: "Inicio",
-        item: siteConfig.url
+        name: locale === "en" ? "Home" : locale === "qu-BO" ? "Qallariy" : "Inicio",
+        item: pageUrl
       }
     ]
   }
-];
-
-export function JsonLd() {
+  ];
   return (
     <script
       type="application/ld+json"

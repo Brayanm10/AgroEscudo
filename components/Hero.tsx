@@ -1,13 +1,15 @@
 import Image from "next/image";
 import { ArrowDown, MapPin, MessageCircle, Radio, ThermometerSun, Waves } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
+import { getMessages, type Locale } from "@/lib/i18n";
 
-export function Hero() {
+export function Hero({ locale }: { locale: Locale }) {
+  const copy = getMessages(locale).hero;
   return (
     <section className="hero-shell relative isolate min-h-[calc(100svh-5rem)] overflow-hidden bg-brandInk text-white">
       <Image
         src="/images/hero-agroescudo-silo.webp"
-        alt="Visual conceptual de un silo, galpón y nodo de monitoreo AgroEscudo"
+        alt={copy.alt}
         fill
         priority
         sizes="100vw"
@@ -30,35 +32,35 @@ export function Hero() {
         <div className="max-w-4xl py-12 sm:py-16">
           <p className="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.2em] text-brandAmberLight sm:text-xs">
             <Radio size={16} aria-hidden="true" />
-            Tecnología boliviana para proteger granos almacenados
+            {copy.eyebrow}
           </p>
           <h1 className="mt-6 max-w-4xl text-[clamp(2.85rem,7vw,6.2rem)] font-black leading-[0.94] text-white">
-            El escudo digital del grano boliviano.
+            {copy.title}
           </h1>
           <p className="mt-7 max-w-2xl text-lg font-medium leading-8 text-white/80 sm:text-xl">
-            Monitoreamos temperatura y humedad en silos, galpones y centros de acopio para detectar condiciones de riesgo a tiempo y ayudar a proteger el valor de la cosecha.
+            {copy.copy}
           </p>
-          <p className="mt-4 text-xs font-bold text-white/50">Imagen conceptual del sistema. No corresponde a una instalación o piloto ejecutado.</p>
+          <p className="mt-4 text-xs font-bold text-white/50">{copy.note}</p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <a href={siteConfig.whatsappUrl} className="btn-amber">
               <MessageCircle size={19} aria-hidden="true" />
-              Solicitar una demostración
+              {copy.primary}
             </a>
             <a href="#como-funciona" className="btn-ghost-light">
-              Ver cómo funciona
+              {copy.secondary}
               <ArrowDown size={18} aria-hidden="true" />
             </a>
           </div>
           <p className="mt-5 flex items-center gap-2 pr-14 text-sm font-bold text-white/60 lg:pr-0">
             <MapPin size={16} className="text-brandAmberLight" aria-hidden="true" />
-            Preparación de pilotos en Cochabamba y Santa Cruz.
+            {copy.location}
           </p>
         </div>
 
         <div className="grid max-w-3xl grid-cols-3 divide-x divide-white/20 border-t border-white/20 bg-brandInk/40 backdrop-blur-md">
-          <HeroReading icon={ThermometerSun} label="Temperatura" value="Lectura continua" />
-          <HeroReading icon={Waves} label="Humedad" value="Umbral definido" />
-          <HeroReading icon={Radio} label="Estado" value="Nodo conectado" live />
+          <HeroReading icon={ThermometerSun} label={copy.readings[0][0]} value={copy.readings[0][1]} />
+          <HeroReading icon={Waves} label={copy.readings[1][0]} value={copy.readings[1][1]} />
+          <HeroReading icon={Radio} label={copy.readings[2][0]} value={copy.readings[2][1]} live />
         </div>
       </div>
     </section>
