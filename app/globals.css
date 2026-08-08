@@ -594,6 +594,138 @@ textarea {
     #ffffff;
 }
 
+.agrotech-section {
+  position: relative;
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+.agrotech-video,
+.agrotech-team {
+  overflow: hidden;
+  border: 1px solid rgba(242,198,109,.3);
+  background: #031712;
+  box-shadow: 0 30px 80px rgba(0,0,0,.28);
+}
+
+.agrotech-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.agrotech-photo {
+  position: relative;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.14);
+  background: #031712;
+  text-align: left;
+  box-shadow: 0 20px 58px rgba(0,0,0,.22);
+}
+
+.agrotech-photo-1 { grid-column: span 7; aspect-ratio: 1280 / 646; }
+.agrotech-photo-2 { grid-column: span 5; aspect-ratio: 4 / 3; }
+.agrotech-photo-3,
+.agrotech-photo-4 { grid-column: span 6; aspect-ratio: 4 / 3; }
+.agrotech-photo-5 { grid-column: 3 / span 8; aspect-ratio: 4 / 3; }
+
+.agrotech-photo img {
+  transition: transform .6s cubic-bezier(.2,.75,.25,1), filter .35s ease;
+}
+
+.agrotech-photo:hover img,
+.agrotech-photo:focus-visible img {
+  transform: scale(1.035);
+  filter: saturate(1.08) contrast(1.03);
+}
+
+.agrotech-photo:focus-visible {
+  outline: 3px solid #f2c66d;
+  outline-offset: 4px;
+}
+
+.agrotech-photo-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent 48%, rgba(3,23,18,.92));
+  pointer-events: none;
+}
+
+.agrotech-photo-caption {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  display: flex;
+  min-height: 4.5rem;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.2rem;
+  color: white;
+  font-size: .8rem;
+  font-weight: 900;
+  line-height: 1.35rem;
+}
+
+.agrotech-photo-caption svg {
+  flex: 0 0 auto;
+  color: #f2c66d;
+}
+
+.agrotech-lightbox {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(1,12,9,.96);
+  backdrop-filter: blur(14px);
+}
+
+.agrotech-lightbox-close,
+.agrotech-lightbox-nav {
+  position: absolute;
+  z-index: 2;
+  display: inline-flex;
+  width: 3rem;
+  height: 3rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255,255,255,.2);
+  background: rgba(255,255,255,.08);
+  color: white;
+  transition: background-color .2s ease, color .2s ease;
+}
+
+.agrotech-lightbox-close { top: 1rem; right: 1rem; }
+.agrotech-lightbox-nav { top: 50%; transform: translateY(-50%); }
+.agrotech-lightbox-close:hover,
+.agrotech-lightbox-nav:hover { background: #f2c66d; color: #071d18; }
+.agrotech-lightbox-close:focus-visible,
+.agrotech-lightbox-nav:focus-visible { outline: 3px solid #f2c66d; outline-offset: 3px; }
+
+@media (max-width: 767px) {
+  .agrotech-grid { grid-template-columns: 1fr; gap: .9rem; }
+  .agrotech-photo-1,
+  .agrotech-photo-2,
+  .agrotech-photo-3,
+  .agrotech-photo-4,
+  .agrotech-photo-5 { grid-column: 1; }
+  .agrotech-photo-1 { aspect-ratio: 1280 / 646; }
+  .agrotech-photo-2,
+  .agrotech-photo-3,
+  .agrotech-photo-4,
+  .agrotech-photo-5 { aspect-ratio: 4 / 3; }
+  .agrotech-photo-caption { padding: .9rem; font-size: .72rem; }
+  .agrotech-lightbox-nav { top: auto; bottom: 1rem; transform: none; }
+  .agrotech-lightbox figure { width: 100vw; }
+}
+
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
     .reveal-on-scroll {

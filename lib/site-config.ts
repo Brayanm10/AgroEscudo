@@ -58,7 +58,19 @@ export const siteConfig = {
     pressSocial: "/images/press-la-razon-social.webp",
     pressCover: "/images/press-la-razon-cover.webp",
     pressArticle: "/images/press-la-razon-article.webp",
-    ecosystem: "/images/ecosystem-innova-up.webp"
+    ecosystem: "/images/ecosystem-innova-up.webp",
+    agrotech: {
+      video: "/media/agrotech-presentacion.mp4",
+      poster: "/images/agrotech/video-poster.webp",
+      team: "/images/agrotech/equipo-stand.webp",
+      gallery: [
+        "/images/agrotech/auditorio.webp",
+        "/images/agrotech/problema-escenario.webp",
+        "/images/agrotech/sistema-escenario.webp",
+        "/images/agrotech/stand-demostracion.webp",
+        "/images/agrotech/encuentro-sector.webp"
+      ]
+    }
   },
   founder: {
     name: "Brayan Javier Mejía Saavedra",
