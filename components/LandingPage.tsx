@@ -16,9 +16,10 @@ import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { WhySection } from "@/components/WhySection";
 import { VideoShowcase } from "@/components/VideoShowcase";
 import { JsonLd } from "@/components/seo/JsonLd";
-import type { Locale } from "@/lib/i18n";
+import { getContactLinks, type Locale } from "@/lib/i18n";
 
 export function LandingPage({ locale }: { locale: Locale }) {
+  const contact = getContactLinks(locale);
   return (
     <div lang={locale}>
       <JsonLd locale={locale} />
@@ -40,13 +41,14 @@ export function LandingPage({ locale }: { locale: Locale }) {
         <CTASection locale={locale} />
       </main>
       <Footer locale={locale} />
-      <WhatsAppFloat label={getWhatsappLabel(locale)} />
+      <WhatsAppFloat href={contact.whatsapp} label={getWhatsappLabel(locale)} />
     </div>
   );
 }
 
 function getWhatsappLabel(locale: Locale) {
   if (locale === "en") return "Talk with AgroEscudo";
+  if (locale === "pt-BR") return "Falar com a AgroEscudo";
   if (locale === "qu-BO") return "AgroEscudowan rimay";
   return "Hablar con AgroEscudo";
 }

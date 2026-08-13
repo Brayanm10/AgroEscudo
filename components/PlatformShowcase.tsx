@@ -1,12 +1,13 @@
 import Image from "next/image";
 import { BellRing, ChartNoAxesCombined, FileText, History } from "lucide-react";
-import { getMessages, type Locale } from "@/lib/i18n";
+import { getContactLinks, getMessages, type Locale } from "@/lib/i18n";
 import { siteConfig } from "@/lib/site-config";
 
 const icons = [ChartNoAxesCombined, BellRing, History, FileText];
 
 export function PlatformShowcase({ locale }: { locale: Locale }) {
   const copy = getMessages(locale).platform;
+  const contact = getContactLinks(locale);
   return (
     <section id="plataforma" className="section-band overflow-hidden bg-brandInk text-white">
       <div className="container-page">
@@ -30,7 +31,7 @@ export function PlatformShowcase({ locale }: { locale: Locale }) {
             </div>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
               <a href={siteConfig.platformUrl} target="_blank" rel="noreferrer" className="btn-amber">{copy.login}</a>
-              <a href={siteConfig.whatsappUrl} className="btn-ghost-light">{copy.demo}</a>
+              <a href={contact.whatsapp} className="btn-ghost-light">{copy.demo}</a>
             </div>
           </div>
 

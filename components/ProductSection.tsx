@@ -6,7 +6,7 @@ const stepIcons = [Gauge, Radio, BellRing];
 
 export function ProductSection({ locale }: { locale: Locale }) {
   const copy = getMessages(locale).product;
-  const stepLabels = locale === "en" ? ["Measure", "Detect", "Act"] : locale === "qu-BO" ? ["Tupuy", "Tariy", "Ruway"] : ["Medir", "Detectar", "Actuar"];
+  const stepLabels = locale === "en" ? ["Measure", "Detect", "Act"] : locale === "pt-BR" ? ["Medir", "Detectar", "Agir"] : locale === "qu-BO" ? ["Tupuy", "Tariy", "Ruway"] : ["Medir", "Detectar", "Actuar"];
   return (
     <section id="producto" className="section-band bg-white">
       <div className="container-page">

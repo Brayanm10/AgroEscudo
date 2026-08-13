@@ -1,9 +1,9 @@
 import { ArrowRight, CheckCircle2, MapPin, MessageCircle } from "lucide-react";
-import { siteConfig } from "@/lib/site-config";
-import { getMessages, type Locale } from "@/lib/i18n";
+import { getContactLinks, getMessages, type Locale } from "@/lib/i18n";
 
 export function PilotSection({ locale }: { locale: Locale }) {
   const copy = getMessages(locale).pilot;
+  const contact = getContactLinks(locale);
   return (
     <section id="piloto" className="section-band relative overflow-hidden bg-brandInk text-white">
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.035)_1px,transparent_1px)] bg-[size:48px_48px]" />
@@ -21,10 +21,10 @@ export function PilotSection({ locale }: { locale: Locale }) {
               <MapPin size={17} aria-hidden="true" /> {copy.location}
             </div>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <a href={siteConfig.technicalVisitUrl} className="btn-amber">
+              <a href={contact.technicalVisit} className="btn-amber">
                 {copy.primary} <ArrowRight size={18} aria-hidden="true" />
               </a>
-              <a href={siteConfig.whatsappUrl} className="btn-ghost-light">
+              <a href={contact.whatsapp} className="btn-ghost-light">
                 <MessageCircle size={18} aria-hidden="true" /> {copy.secondary}
               </a>
             </div>

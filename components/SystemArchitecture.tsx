@@ -123,7 +123,7 @@ export function SystemArchitecture({ locale = "es-BO" }: { compact?: boolean; lo
         </svg>
       </div>
 
-      <div className="architecture-legend" aria-label="Variables y estado">
+      <div className="architecture-legend" aria-label={copy.aria}>
         <Legend color="#D69A27" label={labels.grain} />
         <Legend color="#0B6B50" label={labels.ambient} />
         <Legend color="#708078" label={labels.connection} />

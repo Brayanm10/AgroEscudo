@@ -7,7 +7,7 @@ export function DocumentLanguage() {
   const pathname = usePathname();
 
   useEffect(() => {
-    document.documentElement.lang = pathname === "/en" ? "en" : pathname === "/qu" ? "qu-BO" : "es-BO";
+    document.documentElement.lang = pathname === "/en" ? "en" : pathname === "/pt" ? "pt-BR" : pathname === "/qu" ? "qu-BO" : "es-BO";
   }, [pathname]);
 
   return null;

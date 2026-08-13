@@ -1,10 +1,11 @@
 import Image from "next/image";
 import { ArrowUpRight, Mail, MessageCircle, ShieldCheck } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
-import { getMessages, type Locale } from "@/lib/i18n";
+import { getContactLinks, getMessages, type Locale } from "@/lib/i18n";
 
 export function FounderSection({ locale }: { locale: Locale }) {
   const copy = getMessages(locale).founder;
+  const contact = getContactLinks(locale);
   return (
     <section id="fundador" className="section-band relative overflow-hidden bg-[#092a22] text-white">
       <div className="absolute inset-0 bg-[linear-gradient(rgba(242,198,109,.055)_1px,transparent_1px),linear-gradient(90deg,rgba(242,198,109,.055)_1px,transparent_1px)] bg-[size:52px_52px]" />
@@ -49,10 +50,10 @@ export function FounderSection({ locale }: { locale: Locale }) {
           </div>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <a href={siteConfig.whatsappUrl} className="btn-amber">
+            <a href={contact.whatsapp} className="btn-amber">
               <MessageCircle size={18} aria-hidden="true" /> {copy.contact}
             </a>
-            <a href={siteConfig.emailUrl} className="btn-ghost-light">
+            <a href={contact.email} className="btn-ghost-light">
               <Mail size={18} aria-hidden="true" /> {siteConfig.email}
             </a>
           </div>

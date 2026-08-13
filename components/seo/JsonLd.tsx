@@ -5,6 +5,11 @@ import { getMessages, localeRoutes, type Locale } from "@/lib/i18n";
 export function JsonLd({ locale }: { locale: Locale }) {
   const messages = getMessages(locale);
   const pageUrl = absoluteUrl(localeRoutes[locale]);
+  const service = locale === "pt-BR"
+    ? { name: "Monitoramento IoT para silos e grãos armazenados", type: "Monitoramento pós-colheita com sensores IoT", description: "Monitoramento de temperatura e umidade em silos, armazéns e centros de coleta com alertas, histórico operacional e relatórios.", topics: ["monitoramento de silos", "grãos armazenados", "tecnologia pós-colheita", "IoT agrícola na Bolívia"] }
+    : locale === "en"
+      ? { name: "IoT monitoring for silos and stored grain", type: "Post-harvest monitoring with IoT sensors", description: "Temperature and humidity monitoring for silos, warehouses, and grain collection facilities with alerts, operational history, and reports.", topics: ["silo monitoring", "stored grain", "post-harvest technology", "agricultural IoT in Bolivia"] }
+      : { name: "Monitoreo IoT para silos y granos almacenados", type: "Monitoreo postcosecha con sensores IoT", description: "Monitoreo de temperatura y humedad en silos, galpones y centros de acopio con alertas, historial operativo y reportes.", topics: ["monitoreo de silos", "granos almacenados", "tecnología postcosecha", "IoT agrícola Bolivia"] };
   const jsonLd = [
   {
     "@context": "https://schema.org",
@@ -66,24 +71,7 @@ export function JsonLd({ locale }: { locale: Locale }) {
       "@type": "ImageObject",
       url: absoluteUrl(siteConfig.ogImage)
     },
-    about: [
-      {
-        "@type": "Thing",
-        name: "monitoreo de silos"
-      },
-      {
-        "@type": "Thing",
-        name: "granos almacenados"
-      },
-      {
-        "@type": "Thing",
-        name: "tecnología postcosecha"
-      },
-      {
-        "@type": "Thing",
-        name: "IoT agrícola Bolivia"
-      }
-    ],
+    about: service.topics.map((name) => ({ "@type": "Thing", name })),
     mentions: pressItems.map((item) => ({
       "@type": "CreativeWork",
       name: item.title,
@@ -93,19 +81,18 @@ export function JsonLd({ locale }: { locale: Locale }) {
   {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: "Monitoreo IoT para silos y granos almacenados",
+    name: service.name,
     provider: {
       "@type": "Organization",
       name: siteConfig.name,
       url: siteConfig.url
     },
-    serviceType: "Monitoreo postcosecha con sensores IoT",
+    serviceType: service.type,
     areaServed: siteConfig.areaServed.map((area) => ({
       "@type": "AdministrativeArea",
       name: area
     })),
-    description:
-      "Monitoreo de temperatura y humedad en silos, galpones y centros de acopio con alertas, historial operativo y reportes."
+    description: service.description
   },
   {
     "@context": "https://schema.org",
@@ -126,7 +113,7 @@ export function JsonLd({ locale }: { locale: Locale }) {
       {
         "@type": "ListItem",
         position: 1,
-        name: locale === "en" ? "Home" : locale === "qu-BO" ? "Qallariy" : "Inicio",
+        name: locale === "en" ? "Home" : locale === "pt-BR" ? "Início" : locale === "qu-BO" ? "Qallariy" : "Inicio",
         item: pageUrl
       }
     ]

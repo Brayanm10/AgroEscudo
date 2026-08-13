@@ -1,10 +1,11 @@
 import Image from "next/image";
 import { ArrowDown, ExternalLink, MapPin, MessageCircle } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
-import { getMessages, type Locale } from "@/lib/i18n";
+import { getContactLinks, getMessages, type Locale } from "@/lib/i18n";
 
 export function Hero({ locale }: { locale: Locale }) {
   const copy = getMessages(locale).hero;
+  const contact = getContactLinks(locale);
   return (
     <section className="hero-shell relative isolate min-h-[calc(100svh-3rem)] overflow-hidden bg-brandInk text-white">
       <Image src={siteConfig.media.hero} alt={copy.alt} fill priority fetchPriority="high" loading="eager" sizes="100vw" className="hero-image object-cover object-[68%_center]" />
@@ -29,7 +30,7 @@ export function Hero({ locale }: { locale: Locale }) {
           <p className="mt-5 max-w-2xl text-sm font-medium leading-7 text-white/76 sm:mt-7 sm:text-xl sm:leading-8">{copy.copy}</p>
           <p className="mt-4 text-[10px] font-black uppercase tracking-[0.08em] text-white/50 sm:mt-5 sm:text-xs">{copy.microcopy}</p>
           <div className="hero-actions mt-6 gap-3 sm:mt-8 sm:flex sm:flex-row sm:flex-wrap">
-            <a href={siteConfig.technicalVisitUrl} className="btn-amber"><MessageCircle size={18} aria-hidden="true" />{copy.primary}</a>
+            <a href={contact.technicalVisit} className="btn-amber"><MessageCircle size={18} aria-hidden="true" />{copy.primary}</a>
             <a href="#como-funciona" className="btn-ghost-light">{copy.secondary}<ArrowDown size={18} aria-hidden="true" /></a>
             <a href={siteConfig.platformUrl} target="_blank" rel="noreferrer" className="hero-login-link">{copy.tertiary}<ExternalLink size={16} aria-hidden="true" /></a>
           </div>

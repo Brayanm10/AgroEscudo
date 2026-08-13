@@ -1,18 +1,20 @@
 import type { Metadata } from "next";
 import { absoluteUrl, siteConfig } from "@/lib/site-config";
 
-export const locales = ["es-BO", "en", "qu-BO"] as const;
+export const locales = ["es-BO", "en", "pt-BR", "qu-BO"] as const;
 export type Locale = (typeof locales)[number];
 
 export const localeRoutes: Record<Locale, string> = {
   "es-BO": "/",
   en: "/en",
+  "pt-BR": "/pt",
   "qu-BO": "/qu"
 };
 
 export const localeLabels: Record<Locale, { short: string; name: string }> = {
   "es-BO": { short: "ES", name: "Español" },
   en: { short: "EN", name: "English" },
+  "pt-BR": { short: "PT", name: "Português" },
   "qu-BO": { short: "QU", name: "Quechua" }
 };
 
@@ -149,6 +151,35 @@ const en: typeof es = {
   whatsapp: "Talk with AgroEscudo"
 };
 
+const pt: typeof es = {
+  meta: { title: "AgroEscudo | Monitoramento inteligente para silos e grãos armazenados", description: "Tecnologia boliviana de monitoramento pós-colheita com sensores IoT, alertas, histórico operacional e relatórios para silos, armazéns e centros de coleta de grãos.", ogDescription: "Sensores IoT, alertas, histórico operacional e relatórios para monitoramento pós-colheita em Cochabamba e Santa Cruz, Bolívia." },
+  nav: { product: "Solução", how: "Como funciona", platform: "Plataforma", agrotech: "AgroTECH", progress: "Avanços", ecosystem: "Ecossistema", press: "Imprensa", pilot: "Piloto", login: "Entrar", cta: "Solicitar piloto", open: "Abrir menu", close: "Fechar menu", home: "Início AgroEscudo" },
+  hero: { alt: "Visual conceitual fotorrealista de um silo e um nó de monitoramento AgroEscudo", eyebrow: "AgTech boliviana para proteção pós-colheita", brand: "AgroEscudo.", title: "O escudo digital do grão boliviano.", promise: "O grão não avisa. A AgroEscudo avisa.", copy: "Monitoramos condições críticas em silos e centros de coleta para agir antes que o risco se transforme em perda.", note: "Instalação conceitual. A configuração final é definida de acordo com cada local.", primary: "Solicitar um piloto", secondary: "Ver como funciona", tertiary: "Entrar", microcopy: "Sensores IoT · Alertas · Histórico · Registro · Relatórios", location: "Preparação de pilotos em Cochabamba e Santa Cruz.", readings: [["Temperatura", "Leitura contínua"], ["Umidade", "Limite definido"], ["Status", "Nó conectado"]] },
+  capabilities: { aria: "Capacidades desenvolvidas", items: [["IoT", "Nó funcional"], ["LoRa", "Comunicação testada"], ["Web + Android", "Produto MVP"], ["Bolívia", "Cochabamba e Santa Cruz"]] },
+  problem: { eyebrow: "O risco invisível", title: "O problema não começa quando o grão é perdido.", copy: "Começa quando ninguém consegue ver a tempo o que está acontecendo dentro do armazenamento.", support: "Temperatura, umidade e tendência transformam uma inspeção isolada em uma decisão baseada em evidências.", visual: "Condições invisíveis. Decisões tardias. Sem histórico.", signals: [["Temperatura", "Variação térmica"], ["Umidade", "Condição ambiental"], ["Tendência", "Evolução do risco"]] },
+  solution: { eyebrow: "Sistema AgroEscudo", title: "Um sistema completo. Não um sensor isolado.", copy: "O nó registra variáveis críticas. A comunicação LoRa apoia a continuidade do fluxo e a plataforma transforma leituras em informação operacional que a equipe pode consultar e documentar.", items: [["Nó", "Registra variáveis"], ["LoRa", "Transmite leituras"], ["Gateway", "Concentra dados"], ["Plataforma", "Organiza o histórico"], ["Alerta", "Ativa a resposta"]], status: "Arquitetura MVP desenvolvida para validação em campo.", flow: "Sensor → evidência → decisão" },
+  how: { eyebrow: "Como funciona", title: "Do grão ao alerta, sem pontos cegos.", steps: [["Instalamos", "O nó é adaptado ao local e registra as variáveis acordadas com o operador."], ["Monitoramos", "As leituras são armazenadas e transmitidas periodicamente, mesmo com conectividade intermitente."], ["Alertamos", "O sistema identifica condições fora dos limites configurados para o piloto."], ["Documentamos", "O histórico, os alertas e as ações ficam disponíveis para acompanhamento e relatórios."]] },
+  architecture: { aria: "Diagrama da arquitetura AgroEscudo", alt: "Diagrama conceitual do sistema AgroEscudo: grão, sondas, LoRa, gateway, API, dashboard e alertas", caption: "Arquitetura conceitual do MVP. A quantidade e a posição das sondas, assim como a conectividade, dependem de cada instalação.", labels: { silo: "Silo + grão", probes: "Sondas internas", node: "SiloSensor", lora: "LoRa local", gateway: "Gateway", gatewayDetail: "Armazena e sincroniza", cloud: "Internet + API", cloudDetail: "Dados disponíveis", platform: "Dashboard + app", platformDetail: "Alertas · histórico · relatórios", alert: "Alerta", grain: "Temperatura do grão", ambient: "Ambiente", connection: "Bateria e conexão" }, items: [["SiloSensor", "Mede as variáveis acordadas"], ["LoRa", "Comunicação local"], ["Gateway", "Armazena e sincroniza"], ["Internet + API", "Organiza as leituras"], ["Plataforma", "Alertas, histórico e relatórios"]] },
+  platform: { eyebrow: "Plataforma desenvolvida", title: "Todos os dados. Uma única operação.", copy: "Condições atuais, alertas, histórico e evidências operacionais para que os dados não fiquem presos no sensor.", items: ["Visão geral", "Alertas", "Histórico", "Relatórios"], window: "Plataforma AgroEscudo · visualização demonstrativa", alt: "Plataforma AgroEscudo com status operacional, alertas e indicadores", note: "Captura do MVP existente com dados demonstrativos.", login: "Entrar na plataforma", demo: "Solicitar uma demonstração" },
+  credibility: { press: "Destaque em La Razón", ecosystem: "Apoio institucional", technology: "MVP IoT desenvolvido", local: "Tecnologia boliviana" },
+  film: { eyebrow: "AgroEscudo em movimento", title: "Do silo ao dado. Do dado à decisão.", copy: "Uma visão do sistema que conecta sensores, comunicação e plataforma para transformar condições de armazenamento em informação operacional.", note: "Representação audiovisual conceitual do sistema e do MVP. Não corresponde a uma instalação comercial nem a um piloto executado.", controls: "Controles do vídeo", play: "Reproduzir vídeo", pause: "Pausar vídeo", soundOn: "Ativar som", soundOff: "Silenciar vídeo", railLabel: "Fluxo do sistema AgroEscudo", rail: ["SiloSensor", "LoRa local", "Gateway", "API", "Alerta", "Decisão"] },
+  product: { eyebrow: "Solução", title: "Medir. Detectar. Agir.", copy: "Um sistema completo para transformar sinais do armazenamento em ações operacionais.", items: [["Monitoramento", "Leituras contínuas das variáveis definidas para o local."], ["Alertas", "Avisos configuráveis quando uma condição sai do intervalo."], ["Histórico e registro", "Eventos e ações reunidos em uma fonte compartilhada."], ["Relatórios", "Evidências claras para acompanhamento técnico e operacional."]] },
+  why: { eyebrow: "Por que AgroEscudo", title: "Projetado para operar na realidade da Bolívia.", items: [["Tecnologia local", "Desenvolvimento próximo à realidade de armazenamento e pós-colheita do país."], ["Conectividade intermitente", "A arquitetura pode armazenar e sincronizar leituras quando a conexão retorna."], ["Foco B2B", "Pensado para responsáveis por estoque, qualidade e continuidade operacional."]] },
+  agrotech: {
+    eyebrow: "AgroTECH Bolívia 2026", title: "A AgroEscudo levou a proteção pós-colheita ao palco da AgroTECH.", copy: "Brayan Javier Mejía Saavedra e a equipe apresentaram o sistema a atores do setor agropecuário, explicando o risco, as variáveis críticas e o fluxo do sensor à decisão.", date: "28 e 29 de julho de 2026", location: "Santa Cruz · Bolívia", link: "Ver reconhecimento público", videoTitle: "AgroEscudo no palco principal", videoCaption: "Registro real do pitch sobre monitoramento, alertas antecipados e proteção de grãos armazenados.", teamLabel: "Equipe AgroEscudo", teamAlt: "Equipe AgroEscudo em seu estande na AgroTECH Bolívia 2026", teamCaption: "Equipe e protótipos apresentados no estande da AgroEscudo.", galleryLabel: "Registro do evento", galleryCopy: "Palco, arquitetura, estande e contato com o setor.", open: "Ampliar imagem", close: "Fechar galeria", previous: "Imagem anterior", next: "Próxima imagem", items: [["Auditório da AgroTECH Bolívia 2026 durante uma apresentação técnica", "A AgroTECH reuniu atores do setor agropecuário e do ecossistema de inovação."], ["Equipe AgroEscudo explicando o risco pós-colheita no palco", "O desafio pós-colheita apresentado ao público do evento."], ["Apresentação do fluxo SiloSensor, gateway, plataforma, alerta e ação", "A arquitetura da AgroEscudo, do sensor à decisão."], ["Demonstração do sistema AgroEscudo na área de exposição", "Conversas técnicas e demonstração do sistema no estande."], ["Participantes e organizações reunidos na AgroTECH Bolívia 2026", "Articulação com o ecossistema agropecuário e de inovação."]]
+  },
+  progress: { eyebrow: "Avanços verificáveis", title: "Do protótipo a uma operação piloto.", copy: "Apresentamos o estágio atual de cada componente com transparência. O próximo teste relevante é conectar a tecnologia desenvolvida a condições reais de armazenamento.", items: [["Nó e comunicação LoRa", "Testados em laboratório"], ["API e armazenamento de leituras", "Desenvolvidos"], ["Dashboard web", "Publicado"], ["Aplicativo Android", "Versão MVP"], ["Recuperação após desconexão", "Em validação"], ["Instalação em operação real", "Próximo piloto"]] },
+  founder: { role: "Fundador e CEO", location: "Cochabamba · Bolívia", alt: "Brayan Javier Mejía Saavedra, fundador e CEO da AgroEscudo", lead: "Lidera o desenvolvimento e a validação da AgroEscudo, conectando tecnologia IoT a necessidades reais de armazenamento e pós-colheita.", copy: "Seu trabalho combina visão de produto, desenvolvimento tecnológico e preparação de pilotos para transformar dados de silos e armazéns em decisões operacionais mais oportunas.", principle: "Princípio de trabalho", quote: "Tecnologia útil, evidência operacional e validação em campo.", contact: "Falar com Brayan", interview: "Ler a entrevista em La Razón" },
+  ecosystem: { eyebrowTop: "Ecossistema institucional", headline: "Apoiada por um ecossistema que impulsiona a inovação boliviana.", eyebrow: "Organizações que nos apoiam", title: "Apoio real para avançar com mais rigor.", copy: "A AgroEscudo fortalece seu desenvolvimento tecnológico, comercial e acadêmico com o apoio de organizações bolivianas ligadas à inovação, à incubação empresarial e à formação técnica.", categories: ["Pré-aceleração", "Incubação tecnológica", "Apoio acadêmico", "Acompanhamento técnico"], descriptions: ["Fortalecimento empresarial e preparação para conectar a solução ao mercado.", "Articulação no ecossistema de inovação e pré-aceleração empresarial.", "Apoio institucional vinculado ao processo de fortalecimento empresarial Innova Up.", "Acompanhamento para estruturar, incubar e desenvolver o empreendimento tecnológico.", "Apoio acadêmico ao desenvolvimento tecnológico da equipe fundadora.", "Ambiente acadêmico ligado ao EMBATE e à articulação técnica do projeto.", "Coordenação técnica para fortalecer a validação aplicada no setor agropecuário."], disclaimer: "O apoio corresponde a processos de acompanhamento, incubação, pré-aceleração e articulação institucional; não implica investimento, certificação nem relação comercial." },
+  clients: { eyebrow: "Para quem é", title: "Para operações em que descobrir tarde custa mais.", riskLabel: "Risco operacional", decisionLabel: "Decisão aprimorada", items: [["Proteção de estoque", "Silos · armazéns · centros de coleta", "Estoque concentrado e exposto a mudanças que uma inspeção eventual pode não revelar.", "Priorizar inspeção, ventilação ou acompanhamento com base em evidências."], ["Continuidade operacional", "Moinhos · fábricas de ração · agroindústria", "Uma condição fora do intervalo pode afetar o recebimento, o armazenamento e a programação da planta.", "Coordenar a resposta antes que o evento comprometa o processo seguinte."], ["Supervisão e rastreabilidade", "Cooperativas · equipes de qualidade · gestores de vários locais", "Sem um histórico compartilhado, comparar locais e justificar ações consome tempo operacional.", "Revisar eventos, responsáveis e ações a partir de uma fonte compartilhada."]] },
+  press: { eyebrow: "Imprensa, reconhecimento e cobertura", title: "AgroEscudo no ecossistema de inovação.", copy: "Cobertura, reconhecimento e participação pública de uma tecnologia boliviana voltada à redução do risco pós-colheita por meio do monitoramento de silos, armazéns e centros de coleta.", cover: "Capa do suplemento", article: "Entrevista publicada", evidence: "Evidência editorial", sourceNote: "Veja a publicação em sua fonte original.", open: "Abrir fonte", more: "Mais cobertura indexável sobre a AgroEscudo", moreCopy: "Imprensa, reconhecimento e participação pública, claramente separados de clientes, investimento ou certificações.", moreLink: "Ver página de imprensa", readAria: "Ler a cobertura da AgroEscudo em" },
+  pilot: { eyebrow: "Próximo piloto", title: "Sua instalação pode ser o próximo piloto AgroEscudo.", copy: "Buscamos operações de armazenamento, coleta e processamento em Cochabamba e Santa Cruz para validar o sistema em condições reais e medir disponibilidade, eventos detectados e tempos de resposta.", location: "Cochabamba · Santa Cruz", primary: "Solicitar avaliação do local", secondary: "Falar pelo WhatsApp", note: "A avaliação confirma se o caso de uso faz sentido operacional. Não implica piloto gratuito nem compromisso de compra.", route: "Rota de validação", stages: ["Avaliação inicial do local", "Definição de variáveis e limites", "Instalação e monitoramento", "Relatório de resultados"], observe: "O que é observado", metrics: ["Disponibilidade do sistema", "Eventos detectados", "Tempo de resposta", "Ações registradas"] },
+  faq: { eyebrow: "Perguntas frequentes", title: "O essencial para avaliar a AgroEscudo.", copy: "Respostas diretas para operadores que avaliam monitoramento de silos, grãos armazenados e IoT agrícola na Bolívia.", items: [["O que a AgroEscudo monitora?", "A AgroEscudo monitora temperatura e umidade em silos, armazéns e centros de coleta para identificar condições de risco pós-colheita e apoiar decisões operacionais."], ["A AgroEscudo funciona sem internet permanente?", "O piloto é projetado para conectividade variável. A arquitetura considera a operação em campo e a continuidade das leituras sem depender de uma conexão ideal."], ["Onde pode ser instalada?", "Pode ser avaliada em silos, armazéns, centros de coleta, moinhos, cooperativas, fábricas de ração e agroindústrias com estoque agrícola armazenado."], ["Está disponível em Cochabamba e Santa Cruz?", "Sim. A primeira etapa de validação comercial prioriza instalações piloto em Cochabamba e Santa Cruz, Bolívia."], ["Como posso solicitar um piloto?", "O primeiro passo é entrar em contato pelo WhatsApp para coordenar uma avaliação do local. Essas informações ajudam a determinar se o caso operacional justifica um piloto de 60 a 90 dias."], ["A AgroEscudo substitui a gestão técnica do silo?", "Não. A AgroEscudo não substitui a experiência do operador. Ela fornece dados, alertas, histórico e evidências para apoiar as decisões de gestão."], ["Os sensores são vendidos ou oferecidos como serviço?", "Nesta etapa, a prioridade é o piloto operacional. O modelo final depende do local, da quantidade de nós, do acompanhamento e das necessidades de relatório."], ["Quais operações podem avaliar a AgroEscudo?", "A AgroEscudo foi projetada para operações com grãos armazenados, estoque agrícola, silos, armazéns, plantas, centros de coleta e agroindústrias que precisam de visibilidade e rastreabilidade."]] },
+  cta: { eyebrow: "Contato direto", title: "Você armazena grãos e precisa de mais visibilidade?", copy: "Vamos conversar sobre sua instalação, as variáveis críticas e o escopo de um possível piloto.", location: "Cochabamba e Santa Cruz, Bolívia", email: "E-mail" },
+  footer: { description: "A AgroEscudo desenvolve tecnologia de monitoramento para reduzir riscos operacionais e pós-colheita em silos, armazéns e centros de coleta de grãos.", navigation: "Navegação", contact: "Contato", location: "Operação inicial em Cochabamba e Santa Cruz, Bolívia.", rights: "Todos os direitos reservados.", tagline: "Monitoramento inteligente para proteger grãos armazenados.", fullPress: "Cobertura completa" },
+  whatsapp: "Falar com a AgroEscudo"
+};
+
 const qu: typeof es = {
   meta: { title: "AgroEscudo | Silokunapi waqaychasqa granupaq monitoreo", description: "Boliviapi ruwasqa postcosecha monitoreo: IoT sensores, alertas, historial chaymanta reportes silokunapaq, galponkunapaq, acopio wasikunapaq.", ogDescription: "IoT sensores, alertas chaymanta reportes Cochabamba, Santa Cruzpi waqaychasqa granuta qhawarinapaq." },
   nav: { product: "Sistema", how: "Imayna llamk'an", platform: "Plataforma", agrotech: "AgroTECH", progress: "Ñawpaqman risqanchik", ecosystem: "Yanapakuqkuna", press: "Willakuykuna", pilot: "Piloto", login: "Yaykuy", cta: "Piloto mañay", open: "Menú kichariy", close: "Menú wichq'ay", home: "AgroEscudo qallariy" },
@@ -178,10 +209,42 @@ const qu: typeof es = {
   whatsapp: "AgroEscudowan rimay"
 };
 
-export const messages: Record<Locale, typeof es> = { "es-BO": es, en, "qu-BO": qu };
+export const messages: Record<Locale, typeof es> = { "es-BO": es, en, "pt-BR": pt, "qu-BO": qu };
 
 export function getMessages(locale: Locale) {
   return messages[locale];
+}
+
+const contactCopy: Record<Locale, { whatsapp: string; visit: string; emailSubject: string }> = {
+  "es-BO": {
+    whatsapp: "Hola, conocí AgroEscudo mediante su página web. Me interesa conocer el sistema de monitoreo para silos o almacenamiento de granos y coordinar una demostración.",
+    visit: "Hola AgroEscudo, quiero agendar una evaluación técnica del sitio.",
+    emailSubject: "Solicitud de piloto AgroEscudo"
+  },
+  en: {
+    whatsapp: "Hello AgroEscudo, I found you through your website. I would like to learn about the monitoring system for silos and stored grain and schedule a demonstration.",
+    visit: "Hello AgroEscudo, I would like to schedule a technical site assessment.",
+    emailSubject: "AgroEscudo pilot request"
+  },
+  "pt-BR": {
+    whatsapp: "Olá, conheci a AgroEscudo pelo site. Quero conhecer o sistema de monitoramento para silos e grãos armazenados e agendar uma demonstração.",
+    visit: "Olá AgroEscudo, quero agendar uma avaliação técnica do local.",
+    emailSubject: "Solicitação de piloto AgroEscudo"
+  },
+  "qu-BO": {
+    whatsapp: "Hola AgroEscudo, página webniykichikpi riqsiyki. Silokunapaq monitoreo sistemata riqsiyta chaymanta demostraciónta wakichiyta munani.",
+    visit: "Hola AgroEscudo, sitio técnico evaluaciónta wakichiyta munani.",
+    emailSubject: "AgroEscudo piloto mañakuy"
+  }
+};
+
+export function getContactLinks(locale: Locale) {
+  const copy = contactCopy[locale];
+  return {
+    whatsapp: `https://wa.me/59179366846?text=${encodeURIComponent(copy.whatsapp)}`,
+    technicalVisit: `https://wa.me/59179366846?text=${encodeURIComponent(copy.visit)}`,
+    email: `mailto:agroescudo@gmail.com?subject=${encodeURIComponent(copy.emailSubject)}`
+  };
 }
 
 export function getLocaleMetadata(locale: Locale): Metadata {
@@ -196,6 +259,7 @@ export function getLocaleMetadata(locale: Locale): Metadata {
       languages: {
         "es-BO": "/",
         en: "/en",
+        "pt-BR": "/pt",
         "qu-BO": "/qu",
         "x-default": "/"
       }
