@@ -42,7 +42,7 @@ export function AgrotechSection({ locale }: { locale: Locale }) {
 
         <div className="mt-12 grid gap-5 lg:grid-cols-[1.55fr_.45fr]">
           <figure className="agrotech-video reveal-on-scroll">
-            <video controls playsInline preload="metadata" poster={media.poster} className="aspect-video w-full bg-black object-contain">
+            <video controls playsInline preload="none" poster={media.poster} className="aspect-video w-full bg-black object-contain">
               <source src={media.video} type="video/mp4" />
             </video>
             <figcaption className="flex items-start gap-3 border-t border-white/10 px-4 py-4 sm:px-5">

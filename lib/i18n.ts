@@ -20,20 +20,20 @@ export const localeLabels: Record<Locale, { short: string; name: string }> = {
 
 const es = {
   meta: {
-    title: "AgroEscudo | Monitoreo inteligente para silos y almacenamiento de granos",
-    description: "Tecnología boliviana de monitoreo postcosecha con sensores IoT, alertas, historial y reportes para silos, galpones, centros de acopio y granos almacenados.",
-    ogDescription: "Sensores IoT, alertas, historial operativo y reportes para monitoreo postcosecha en Cochabamba y Santa Cruz, Bolivia."
+    title: siteConfig.title as string,
+    description: siteConfig.description as string,
+    ogDescription: siteConfig.ogDescription as string
   },
   nav: { product: "Solución", how: "Cómo funciona", platform: "Plataforma", agrotech: "AgroTECH", progress: "Avances", ecosystem: "Ecosistema", press: "Prensa", pilot: "Piloto", login: "Ingresar", cta: "Solicitar piloto", open: "Abrir menú", close: "Cerrar menú", home: "AgroEscudo inicio" },
   hero: {
     alt: "Visual conceptual fotorrealista de un silo y un nodo de monitoreo AgroEscudo",
     eyebrow: "AgTech boliviana para protección postcosecha",
     brand: "AgroEscudo.",
-    title: "El escudo digital del grano boliviano.",
+    title: "El escudo digital del agro boliviano.",
     promise: "El grano no avisa. AgroEscudo sí.",
-    copy: "Monitoreamos condiciones críticas en silos y centros de acopio para actuar antes de que el riesgo se convierta en pérdida.",
+    copy: "Monitoreo inteligente para silos y centros de acopio. Transformamos datos de temperatura y humedad en información útil para anticipar condiciones de riesgo y proteger el valor de los granos almacenados.",
     note: "Instalación conceptual. La configuración final se define según cada sitio.",
-    primary: "Solicitar un piloto", secondary: "Ver cómo funciona", tertiary: "Ingresar", microcopy: "Sensores IoT · Alertas · Historial · Bitácora · Reportes", location: "Preparación de pilotos en Cochabamba y Santa Cruz.",
+    primary: "Solicitar una demostración", secondary: "Ver cómo funciona", tertiary: "Ingresar", microcopy: "Sensores IoT · Alertas · Historial · Bitácora · Reportes", location: "Prioridad comercial: Cochabamba, La Paz y Santa Cruz.",
     readings: [["Temperatura", "Lectura continua"], ["Humedad", "Umbral definido"], ["Estado", "Nodo conectado"]]
   },
   capabilities: { aria: "Capacidades desarrolladas", items: [["IoT", "Nodo funcional"], ["LoRa", "Comunicación probada"], ["Web + Android", "Producto MVP"], ["Bolivia", "Cochabamba y Santa Cruz"]] },
@@ -265,7 +265,7 @@ export function getLocaleMetadata(locale: Locale): Metadata {
       }
     },
     openGraph: {
-      title: content.title,
+      title: locale === "es-BO" ? siteConfig.ogTitle : content.title,
       description: content.ogDescription,
       url: absoluteUrl(route),
       siteName: siteConfig.name,
@@ -274,6 +274,6 @@ export function getLocaleMetadata(locale: Locale): Metadata {
       type: "website",
       images: [{ url: absoluteUrl(siteConfig.ogImage), width: 1200, height: 630, alt: content.title }]
     },
-    twitter: { card: "summary_large_image", title: content.title, description: content.ogDescription, images: [absoluteUrl(siteConfig.ogImage)] }
+    twitter: { card: "summary_large_image", title: locale === "es-BO" ? siteConfig.ogTitle : content.title, description: content.ogDescription, images: [absoluteUrl(siteConfig.ogImage)] }
   };
 }

@@ -76,7 +76,14 @@ export default function PressPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(pressJsonLd).replace(/</g, "\\u003c")
+          __html: JSON.stringify([pressJsonLd, {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Inicio", item: absoluteUrl("/") },
+              { "@type": "ListItem", position: 2, name: "Prensa", item: absoluteUrl("/prensa") }
+            ]
+          }]).replace(/</g, "\\u003c")
         }}
       />
       <section className="bg-brandInk py-10 text-white">
@@ -84,6 +91,9 @@ export default function PressPage() {
           <Link href="/" className="inline-flex items-center gap-2 text-sm font-black text-white/70 transition hover:text-white">
             <ArrowLeft size={17} aria-hidden="true" /> Volver a la landing
           </Link>
+          <nav aria-label="Ruta de navegación" className="mt-5 text-sm text-white/80">
+            <Link href="/" className="underline">Inicio</Link> <span aria-hidden="true"> / </span> <span aria-current="page">Prensa</span>
+          </nav>
           <div className="mt-14 grid gap-8 lg:grid-cols-[.82fr_1.18fr] lg:items-end">
             <div>
               <p className="text-[11px] font-black uppercase tracking-[0.18em] text-brandAmberLight">Prensa y reconocimientos</p>

@@ -1,0 +1,8 @@
+.git
+node_modules
+.next
+assets
+.env*
+*.log
+*.tsbuildinfo
+next-google-verification-proof.png

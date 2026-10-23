@@ -14,10 +14,11 @@ export function JsonLd({ locale }: { locale: Locale }) {
   {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": absoluteUrl("/#organization"),
     name: siteConfig.name,
     url: siteConfig.url,
     logo: absoluteUrl(siteConfig.logo),
-    description: messages.meta.description,
+    description: siteConfig.description,
     email: siteConfig.email,
     telephone: siteConfig.phone,
     founder: {
@@ -26,7 +27,15 @@ export function JsonLd({ locale }: { locale: Locale }) {
       jobTitle: siteConfig.founder.role,
       image: absoluteUrl(siteConfig.founder.image)
     },
-    sameAs: siteConfig.socialLinks.map((link) => link.href),
+    sameAs: ["https://www.instagram.com/agroescudo/"],
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "sales",
+      telephone: siteConfig.phone,
+      email: siteConfig.email,
+      areaServed: "BO",
+      availableLanguage: "es"
+    },
     subjectOf: pressItems.map((item) => ({
       "@type": "CreativeWork",
       name: item.title,
@@ -37,11 +46,6 @@ export function JsonLd({ locale }: { locale: Locale }) {
         name: item.source
       }
     })),
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Cochabamba",
-      addressCountry: "BO"
-    },
     areaServed: siteConfig.areaServed.map((area) => ({
       "@type": "AdministrativeArea",
       name: area
@@ -50,22 +54,23 @@ export function JsonLd({ locale }: { locale: Locale }) {
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": absoluteUrl("/#website"),
     name: siteConfig.name,
     url: siteConfig.url,
-    inLanguage: locale,
-    description: messages.meta.description
+    inLanguage: ["es-BO", "en", "pt-BR", "qu-BO"],
+    description: siteConfig.description,
+    publisher: { "@id": absoluteUrl("/#organization") }
   },
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
+    "@id": `${pageUrl}#webpage`,
     name: messages.meta.title,
     url: pageUrl,
     inLanguage: locale,
     description: messages.meta.description,
     isPartOf: {
-      "@type": "WebSite",
-      name: siteConfig.name,
-      url: siteConfig.url
+      "@id": absoluteUrl("/#website")
     },
     primaryImageOfPage: {
       "@type": "ImageObject",
@@ -83,9 +88,7 @@ export function JsonLd({ locale }: { locale: Locale }) {
     "@type": "Service",
     name: service.name,
     provider: {
-      "@type": "Organization",
-      name: siteConfig.name,
-      url: siteConfig.url
+      "@id": absoluteUrl("/#organization")
     },
     serviceType: service.type,
     areaServed: siteConfig.areaServed.map((area) => ({
@@ -105,18 +108,6 @@ export function JsonLd({ locale }: { locale: Locale }) {
         text: answer
       }
     }))
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: locale === "en" ? "Home" : locale === "pt-BR" ? "Início" : locale === "qu-BO" ? "Qallariy" : "Inicio",
-        item: pageUrl
-      }
-    ]
   }
   ];
   return (

@@ -8,7 +8,7 @@ export function Hero({ locale }: { locale: Locale }) {
   const contact = getContactLinks(locale);
   return (
     <section className="hero-shell relative isolate min-h-[calc(100svh-3rem)] overflow-hidden bg-brandInk text-white">
-      <Image src={siteConfig.media.hero} alt={copy.alt} fill priority fetchPriority="high" loading="eager" sizes="100vw" className="hero-image object-cover object-[68%_center]" />
+      <Image src={siteConfig.media.hero} alt={copy.alt} fill priority fetchPriority="high" loading="eager" quality={65} sizes="100vw" className="hero-image object-cover object-[68%_center]" />
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(3,23,18,.98)_0%,rgba(3,27,21,.92)_36%,rgba(3,27,21,.44)_66%,rgba(3,27,21,.12)_100%)]" />
       <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(3,23,18,.82)_0%,transparent_48%)]" />
       <div className="hero-grain absolute inset-0 opacity-30" />
@@ -30,7 +30,7 @@ export function Hero({ locale }: { locale: Locale }) {
           <p className="mt-5 max-w-2xl text-sm font-medium leading-7 text-white/76 sm:mt-7 sm:text-xl sm:leading-8">{copy.copy}</p>
           <p className="mt-4 text-[10px] font-black uppercase tracking-[0.08em] text-white/50 sm:mt-5 sm:text-xs">{copy.microcopy}</p>
           <div className="hero-actions mt-6 gap-3 sm:mt-8 sm:flex sm:flex-row sm:flex-wrap">
-            <a href={contact.technicalVisit} className="btn-amber"><MessageCircle size={18} aria-hidden="true" />{copy.primary}</a>
+            <a href={locale === "es-BO" ? contact.whatsapp : contact.technicalVisit} className="btn-amber"><MessageCircle size={18} aria-hidden="true" />{copy.primary}</a>
             <a href="#como-funciona" className="btn-ghost-light">{copy.secondary}<ArrowDown size={18} aria-hidden="true" /></a>
             <a href={siteConfig.platformUrl} target="_blank" rel="noreferrer" className="hero-login-link">{copy.tertiary}<ExternalLink size={16} aria-hidden="true" /></a>
           </div>

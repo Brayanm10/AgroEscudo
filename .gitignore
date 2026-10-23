@@ -9,3 +9,4 @@ assets/source/
 .env*
 !.env.example
 .vercel/
+next-google-verification-proof.png

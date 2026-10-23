@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { DocumentLanguage } from "@/components/DocumentLanguage";
 import { absoluteUrl, siteConfig } from "@/lib/site-config";
-import "./globals.css";
+import "@/app/globals.css";
 
-const googleVerification = process.env.GOOGLE_SITE_VERIFICATION;
+const googleVerification =
+  process.env.GOOGLE_SITE_VERIFICATION || "FYai700AQxWwoJ5odHN9cMgVg6R4AYca7wVrV9Qimxw";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     }
   },
   openGraph: {
-    title: siteConfig.title,
+    title: siteConfig.ogTitle,
     description: siteConfig.ogDescription,
     url: siteConfig.url,
     siteName: siteConfig.name,
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: siteConfig.title,
+    title: siteConfig.ogTitle,
     description: siteConfig.ogDescription,
     images: [absoluteUrl(siteConfig.ogImage)]
   },
@@ -57,15 +57,19 @@ export const metadata: Metadata = {
       }
     : undefined,
   icons: {
-    icon: siteConfig.logo,
-    apple: siteConfig.logo
+    icon: [
+      { url: "/favicon.ico", sizes: "16x16 32x32 48x48", type: "image/x-icon" },
+      { url: "/favicon-48.png", sizes: "48x48", type: "image/png" },
+      { url: "/favicon-96.png", sizes: "96x96", type: "image/png" }
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }]
   }
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootDocument({ children, language }: { children: React.ReactNode; language: string }) {
   return (
-    <html lang={siteConfig.language}>
-      <body><DocumentLanguage />{children}</body>
+    <html lang={language}>
+      <body>{children}</body>
     </html>
   );
 }

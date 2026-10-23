@@ -1,17 +1,17 @@
-const rawSiteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://agroescudo.vercel.app";
-
 export const siteConfig = {
   name: "AgroEscudo",
   shortName: "AgroEscudo",
-  tagline: "El escudo digital del grano boliviano",
-  url: rawSiteUrl.replace(/\/$/, ""),
+  tagline: "El escudo digital del agro boliviano",
+  url: "https://agroescudo.vercel.app",
   locale: "es_BO",
   language: "es-BO",
-  title: "AgroEscudo | Monitoreo inteligente para silos y almacenamiento de granos",
+  title: "AgroEscudo | Monitoreo inteligente de silos en Bolivia",
   description:
-    "Tecnología boliviana de monitoreo postcosecha con sensores IoT, alertas, historial y reportes para silos, galpones, centros de acopio y granos almacenados.",
+    "AgroEscudo protege granos almacenados con sensores IoT, alertas tempranas y monitoreo de temperatura y humedad. Tecnología boliviana para silos y centros de acopio.",
+  ogTitle: "AgroEscudo | El escudo digital del agro boliviano",
   ogDescription:
-    "Sensores IoT, alertas, historial operativo y reportes para monitoreo postcosecha en Cochabamba y Santa Cruz, Bolivia.",
+    "Tecnología boliviana para monitorear silos y centros de acopio mediante sensores IoT, alertas tempranas y datos para gestionar riesgos poscosecha.",
+  commercialPriorities: ["Cochabamba", "La Paz", "Santa Cruz"],
   keywords: [
     "AgroEscudo",
     "AgroEscudo Bolivia",
@@ -49,8 +49,8 @@ export const siteConfig = {
   qrWhatsappUrl:
     "https://wa.me/59179366846?text=Hola%20AgroEscudo%2C%20escane%C3%A9%20el%20QR%20y%20quiero%20conocer%20el%20sistema%20y%20solicitar%20una%20evaluaci%C3%B3n",
   emailUrl: "mailto:agroescudo@gmail.com?subject=Solicitud%20de%20piloto%20AgroEscudo",
-  logo: "/logo-mark-512.png",
-  ogImage: "/images/og-agroescudo.webp",
+  logo: "/images/agroescudo-logo-512.png",
+  ogImage: "/images/agroescudo-social.png",
   media: {
     hero: "/images/hero-silo-sensor-concept.webp",
     productFilm: "/media/agroescudo-sistema.mp4",

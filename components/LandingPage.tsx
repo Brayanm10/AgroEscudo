@@ -3,6 +3,7 @@ import { CredibilityStrip } from "@/components/CredibilityStrip";
 import { CTASection } from "@/components/CTASection";
 import { EcosystemSection } from "@/components/EcosystemSection";
 import { Footer } from "@/components/Footer";
+import { FAQSection } from "@/components/FAQSection";
 import { FounderSection } from "@/components/FounderSection";
 import { Hero } from "@/components/Hero";
 import { HowItWorks } from "@/components/HowItWorks";
@@ -38,6 +39,7 @@ export function LandingPage({ locale }: { locale: Locale }) {
         <PressSection locale={locale} />
         <AgrotechSection locale={locale} />
         <PilotSection locale={locale} />
+        <FAQSection locale={locale} />
         <CTASection locale={locale} />
       </main>
       <Footer locale={locale} />
